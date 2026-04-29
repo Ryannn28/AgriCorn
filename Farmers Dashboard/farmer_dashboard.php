@@ -4190,12 +4190,24 @@ $startInFeatureView = $requestedDashboardView === "features";
 			gap: 10px;
 			padding-top: 5px;
 			overflow-x: auto;
-			padding-bottom: 8px;
-			justify-content: center;
-			scrollbar-width: none; /* Hide scrollbar Firefox */
+			padding-bottom: 12px;
+			justify-content: flex-start;
+			scrollbar-width: thin;
+			scrollbar-color: #7fb685 rgba(127, 182, 133, 0.1);
 		}
 		.weather-forecast::-webkit-scrollbar {
-			display: none; /* Hide scrollbar Chrome/Safari */
+			height: 6px;
+		}
+		.weather-forecast::-webkit-scrollbar-track {
+			background: rgba(127, 182, 133, 0.05);
+			border-radius: 10px;
+		}
+		.weather-forecast::-webkit-scrollbar-thumb {
+			background: #7fb685;
+			border-radius: 10px;
+		}
+		.weather-forecast::-webkit-scrollbar-thumb:hover {
+			background: #6aa872;
 		}
 		.forecast-day {
 			display: flex;
