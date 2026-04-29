@@ -1,0 +1,24 @@
+{
+    "meta": {
+        "users_id": 19,
+        "profile": "Marlita",
+        "created_at": "2026-04-28T19:32:39+02:00"
+    },
+    "summary": {
+        "profile": null,
+        "forecast": null,
+        "predictedIncome": "\u20b1177,100",
+        "predictedCost": "\u20b17,000",
+        "predictedProfit": "\u20b1170,100",
+        "actualIncome": "175000",
+        "plantingDate": "Feb 1, 2026",
+        "harvestDate": "Mar 22, 2026",
+        "currentStage": "Stage 19 - Harvest",
+        "heroStats": {
+            "stage": "Stage 19 - Harvest",
+            "progress": "100%",
+            "daysLeft": null
+        },
+        "generated_at": "2026-04-28T17:32:39.779Z"
+    }
+}

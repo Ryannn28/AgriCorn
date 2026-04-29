@@ -1,0 +1,54 @@
+{
+    "market_prices": {
+        "sweet_hybrid": {
+            "label": "Sweet Corn (Hybrid)",
+            "price_per_kg": 26
+        },
+        "sweet_native": {
+            "label": "Sweet Corn (Native)",
+            "price_per_kg": 24
+        },
+        "sweet_opv": {
+            "label": "Sweet Corn (OPV)",
+            "price_per_kg": 22
+        },
+        "glutinous": {
+            "label": "Glutinous \/ Waxy Corn",
+            "price_per_kg": 25
+        },
+        "yellow_hybrid": {
+            "label": "Yellow Corn (Hybrid)",
+            "price_per_kg": 21
+        },
+        "yellow_feeds": {
+            "label": "Yellow Corn (Feeds)",
+            "price_per_kg": 25
+        },
+        "yellow_native": {
+            "label": "Yellow Corn (Native)",
+            "price_per_kg": 19
+        },
+        "white_field": {
+            "label": "White Corn (Field)",
+            "price_per_kg": 20
+        },
+        "white_native": {
+            "label": "White Corn (Native)",
+            "price_per_kg": 21
+        },
+        "popcorn": {
+            "label": "Popcorn",
+            "price_per_kg": 45
+        },
+        "baby_corn": {
+            "label": "Baby Corn",
+            "price_per_kg": 20
+        },
+        "other": {
+            "label": "Other (Specify)",
+            "price_per_kg": 20
+        }
+    },
+    "currency": "PHP",
+    "last_updated": "2026-04-18"
+}

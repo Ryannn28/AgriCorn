@@ -1,0 +1,599 @@
+﻿{
+    "updatedAt":  "2026-04-20T12:32:21+02:00",
+    "tasks":  [
+                  {
+                      "id":  "task_69e600b5f2a660.31825316",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-04-20",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 1: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2cf84.68943599",
+                      "title":  "Corn Stages",
+                      "type":  "corn-stage",
+                      "date":  "2026-04-20",
+                      "time":  "06:45",
+                      "notes":  "[AutoTimeline] Day 1: Planting / Seed",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2a842.46621484",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-04-22",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 3: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2d019.76150187",
+                      "title":  "Corn Stages",
+                      "type":  "corn-stage",
+                      "date":  "2026-04-23",
+                      "time":  "06:45",
+                      "notes":  "[AutoTimeline] Day 4: Germination",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2a933.60406734",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-04-25",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 6: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2a9a7.22944468",
+                      "title":  "Fertilizer Tasks",
+                      "type":  "fertilizing",
+                      "date":  "2026-04-26",
+                      "time":  "07:15",
+                      "notes":  "[AutoTimeline] Day 7: apply fertilizer based on growth stage.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2d098.62362487",
+                      "title":  "Corn Stages",
+                      "type":  "corn-stage",
+                      "date":  "2026-04-27",
+                      "time":  "06:45",
+                      "notes":  "[AutoTimeline] Day 8: Emergence (VE)",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2ab65.44629621",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-04-28",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 9: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2abd2.99138330",
+                      "title":  "Spraying Tasks",
+                      "type":  "spraying",
+                      "date":  "2026-04-29",
+                      "time":  "08:00",
+                      "notes":  "[AutoTimeline] Day 10: inspect pests and spray when needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2ac89.94237544",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-05-01",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 12: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2ad40.22874417",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-05-04",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 15: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2d119.92544398",
+                      "title":  "Corn Stages",
+                      "type":  "corn-stage",
+                      "date":  "2026-05-04",
+                      "time":  "06:45",
+                      "notes":  "[AutoTimeline] Day 15: Early Vegetative (V1-V2)",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2ae05.17208467",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-05-07",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 18: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2aea9.93440023",
+                      "title":  "Spraying Tasks",
+                      "type":  "spraying",
+                      "date":  "2026-05-09",
+                      "time":  "08:00",
+                      "notes":  "[AutoTimeline] Day 20: inspect pests and spray when needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2af12.38998265",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-05-10",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 21: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2af50.43456649",
+                      "title":  "Fertilizer Tasks",
+                      "type":  "fertilizing",
+                      "date":  "2026-05-10",
+                      "time":  "07:15",
+                      "notes":  "[AutoTimeline] Day 21: apply fertilizer based on growth stage.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b023.84231366",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-05-13",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 24: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2d195.23594237",
+                      "title":  "Corn Stages",
+                      "type":  "corn-stage",
+                      "date":  "2026-05-14",
+                      "time":  "06:45",
+                      "notes":  "[AutoTimeline] Day 25: Vegetative Growth (V3-V5)",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b0f3.46257908",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-05-16",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 27: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b1b9.63826247",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-05-19",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 30: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b1f2.90666085",
+                      "title":  "Spraying Tasks",
+                      "type":  "spraying",
+                      "date":  "2026-05-19",
+                      "time":  "08:00",
+                      "notes":  "[AutoTimeline] Day 30: inspect pests and spray when needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b2b3.17828243",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-05-22",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 33: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b351.81091951",
+                      "title":  "Fertilizer Tasks",
+                      "type":  "fertilizing",
+                      "date":  "2026-05-24",
+                      "time":  "07:15",
+                      "notes":  "[AutoTimeline] Day 35: apply fertilizer based on growth stage.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b3c4.27680398",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-05-25",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 36: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b492.87670228",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-05-28",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 39: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2d202.12793949",
+                      "title":  "Corn Stages",
+                      "type":  "corn-stage",
+                      "date":  "2026-05-29",
+                      "time":  "06:45",
+                      "notes":  "[AutoTimeline] Day 40: Late Vegetative (V6-V9)",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b500.69311176",
+                      "title":  "Spraying Tasks",
+                      "type":  "spraying",
+                      "date":  "2026-05-29",
+                      "time":  "08:00",
+                      "notes":  "[AutoTimeline] Day 40: inspect pests and spray when needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b5a8.33360849",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-05-31",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 42: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b675.46319149",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-06-03",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 45: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b745.98649827",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-06-06",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 48: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b7c1.35150511",
+                      "title":  "Fertilizer Tasks",
+                      "type":  "fertilizing",
+                      "date":  "2026-06-07",
+                      "time":  "07:15",
+                      "notes":  "[AutoTimeline] Day 49: apply fertilizer based on growth stage.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b837.13854376",
+                      "title":  "Spraying Tasks",
+                      "type":  "spraying",
+                      "date":  "2026-06-08",
+                      "time":  "08:00",
+                      "notes":  "[AutoTimeline] Day 50: inspect pests and spray when needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b8b6.78009249",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-06-09",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 51: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2b988.73771571",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-06-12",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 54: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2d289.61263600",
+                      "title":  "Corn Stages",
+                      "type":  "corn-stage",
+                      "date":  "2026-06-13",
+                      "time":  "06:45",
+                      "notes":  "[AutoTimeline] Day 55: Silking (R1)",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2ba53.73466267",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-06-15",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 57: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2bb24.05539109",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-06-18",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 60: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2bb61.95139177",
+                      "title":  "Spraying Tasks",
+                      "type":  "spraying",
+                      "date":  "2026-06-18",
+                      "time":  "08:00",
+                      "notes":  "[AutoTimeline] Day 60: inspect pests and spray when needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2bc26.36954902",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-06-21",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 63: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2bc76.03079750",
+                      "title":  "Fertilizer Tasks",
+                      "type":  "fertilizing",
+                      "date":  "2026-06-21",
+                      "time":  "07:15",
+                      "notes":  "[AutoTimeline] Day 63: apply fertilizer based on growth stage.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2d2f1.01824555",
+                      "title":  "Corn Stages",
+                      "type":  "corn-stage",
+                      "date":  "2026-06-23",
+                      "time":  "06:45",
+                      "notes":  "[AutoTimeline] Day 65: Grain Fill (R2-R3)",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2bd34.47046326",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-06-24",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 66: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2be15.91582229",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-06-27",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 69: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2be96.63511699",
+                      "title":  "Spraying Tasks",
+                      "type":  "spraying",
+                      "date":  "2026-06-28",
+                      "time":  "08:00",
+                      "notes":  "[AutoTimeline] Day 70: inspect pests and spray when needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2bf55.62002872",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-06-30",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 72: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2c025.45217563",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-07-03",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 75: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2c0c1.79250940",
+                      "title":  "Fertilizer Tasks",
+                      "type":  "fertilizing",
+                      "date":  "2026-07-05",
+                      "time":  "07:15",
+                      "notes":  "[AutoTimeline] Day 77: apply fertilizer based on growth stage.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2c142.12723721",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-07-06",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 78: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2d366.72396913",
+                      "title":  "Corn Stages",
+                      "type":  "corn-stage",
+                      "date":  "2026-07-06",
+                      "time":  "06:45",
+                      "notes":  "[AutoTimeline] Day 78: Dough Stage (R4)",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2c464.75665377",
+                      "title":  "Spraying Tasks",
+                      "type":  "spraying",
+                      "date":  "2026-07-08",
+                      "time":  "08:00",
+                      "notes":  "[AutoTimeline] Day 80: inspect pests and spray when needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2c593.64304367",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-07-09",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 81: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2c666.98287961",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-07-12",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 84: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2c725.34915254",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-07-15",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 87: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2d3d2.81018226",
+                      "title":  "Corn Stages",
+                      "type":  "corn-stage",
+                      "date":  "2026-07-16",
+                      "time":  "06:45",
+                      "notes":  "[AutoTimeline] Day 88: Dent Stage (R5)",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2c7e9.31488636",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-07-18",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 90: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2c832.51569943",
+                      "title":  "Spraying Tasks",
+                      "type":  "spraying",
+                      "date":  "2026-07-18",
+                      "time":  "08:00",
+                      "notes":  "[AutoTimeline] Day 90: inspect pests and spray when needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2c8a1.55104051",
+                      "title":  "Fertilizer Tasks",
+                      "type":  "fertilizing",
+                      "date":  "2026-07-19",
+                      "time":  "07:15",
+                      "notes":  "[AutoTimeline] Day 91: apply fertilizer based on growth stage.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2c952.24260926",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-07-21",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 93: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2ca18.46266302",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-07-24",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 96: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2caf9.94388866",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-07-27",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 99: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2cb79.08517954",
+                      "title":  "Spraying Tasks",
+                      "type":  "spraying",
+                      "date":  "2026-07-28",
+                      "time":  "08:00",
+                      "notes":  "[AutoTimeline] Day 100: inspect pests and spray when needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2cc24.15309039",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-07-30",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 102: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2ccf6.75381343",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-08-02",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 105: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2cd49.00473237",
+                      "title":  "Fertilizer Tasks",
+                      "type":  "fertilizing",
+                      "date":  "2026-08-02",
+                      "time":  "07:15",
+                      "notes":  "[AutoTimeline] Day 105: apply fertilizer based on growth stage.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2ce19.94237935",
+                      "title":  "Watering Tasks",
+                      "type":  "watering",
+                      "date":  "2026-08-05",
+                      "time":  "06:30",
+                      "notes":  "[AutoTimeline] Day 108: check moisture and water as needed.",
+                      "completed":  false
+                  },
+                  {
+                      "id":  "task_69e600b5f2d443.04608721",
+                      "title":  "Corn Stages",
+                      "type":  "corn-stage",
+                      "date":  "2026-08-07",
+                      "time":  "06:45",
+                      "notes":  "[AutoTimeline] Day 110: Harvest Ready (R6)",
+                      "completed":  false
+                  }
+              ]
+}

@@ -1,0 +1,446 @@
+{
+    "updatedAt": "2026-04-29T03:35:39+02:00",
+    "autoScheduleGenerated": true,
+    "tasks": [
+        {
+            "id": "task_69f16056e629f0.19585975",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-04-29",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": true
+        },
+        {
+            "id": "task_69f16056e621e7.29049796",
+            "title": "Planting Seeds",
+            "type": "corn-stage",
+            "date": "2026-04-29",
+            "time": "06:40",
+            "notes": "[AutoAI] Reason: Stage transition: Planting Seeds. Align watering, fertilizer, and monitoring with this growth phase. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e623e6.94897674",
+            "title": "Germination Stage",
+            "type": "corn-stage",
+            "date": "2026-04-30",
+            "time": "06:40",
+            "notes": "[AutoAI] Reason: Stage transition: Germination Stage. Align watering, fertilizer, and monitoring with this growth phase. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e62ad2.57549499",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-05-02",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e62b93.35881077",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-05-05",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e62c51.12527104",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-05-08",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e62d10.76619394",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-05-11",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e624d5.82790021",
+            "title": "Seedling Stage",
+            "type": "corn-stage",
+            "date": "2026-05-13",
+            "time": "06:40",
+            "notes": "[AutoAI] Reason: Stage transition: Seedling Stage. Align watering, fertilizer, and monitoring with this growth phase. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e62dd5.37023737",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-05-14",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e641b0.20706789",
+            "title": "Fertilizer Task",
+            "type": "fertilizing",
+            "date": "2026-05-15",
+            "time": "07:30",
+            "notes": "[AutoAI] Reason: Fertilizer is scheduled after early establishment, then repeated by growth window for better nutrient uptake. Soil type (loamy) is considered in nutrient timing. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e62e83.80326172",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-05-17",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e62f48.06357447",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-05-20",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63000.31341793",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-05-23",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e630c1.78901224",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-05-26",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e625a1.84256349",
+            "title": "Vegetative Stage",
+            "type": "corn-stage",
+            "date": "2026-05-27",
+            "time": "06:40",
+            "notes": "[AutoAI] Reason: Stage transition: Vegetative Stage. Align watering, fertilizer, and monitoring with this growth phase. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63170.18766357",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-05-29",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63232.12919434",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-06-01",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e632e0.79799349",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-06-04",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e64271.33865861",
+            "title": "Fertilizer Task",
+            "type": "fertilizing",
+            "date": "2026-06-04",
+            "time": "07:30",
+            "notes": "[AutoAI] Reason: Fertilizer is scheduled after early establishment, then repeated by growth window for better nutrient uptake. Soil type (loamy) is considered in nutrient timing. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e633a7.67910187",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-06-07",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63463.07348164",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-06-10",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63510.49343521",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-06-13",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e626a4.83175797",
+            "title": "Rapid Vegetative Growth",
+            "type": "corn-stage",
+            "date": "2026-06-15",
+            "time": "06:40",
+            "notes": "[AutoAI] Reason: Stage transition: Rapid Vegetative Growth. Align watering, fertilizer, and monitoring with this growth phase. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e635d6.39965566",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-06-16",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63687.93172082",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-06-19",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63749.10247807",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-06-22",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e64328.40116101",
+            "title": "Fertilizer Task",
+            "type": "fertilizing",
+            "date": "2026-06-24",
+            "time": "07:30",
+            "notes": "[AutoAI] Reason: Fertilizer is scheduled after early establishment, then repeated by growth window for better nutrient uptake. Soil type (loamy) is considered in nutrient timing. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e637f6.37545541",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-06-25",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e638b2.97062216",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-06-28",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63960.05959977",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-07-01",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e62768.85617315",
+            "title": "Reproductive Stage (Tasseling/Silking)",
+            "type": "corn-stage",
+            "date": "2026-07-02",
+            "time": "06:40",
+            "notes": "[AutoAI] Reason: Stage transition: Reproductive Stage (Tasseling/Silking). Align watering, fertilizer, and monitoring with this growth phase. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63a37.88240823",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-07-04",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63af9.27767295",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-07-07",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63bb6.78432634",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-07-10",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63c83.97275256",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-07-13",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e643d8.75858908",
+            "title": "Fertilizer Task",
+            "type": "fertilizing",
+            "date": "2026-07-14",
+            "time": "07:30",
+            "notes": "[AutoAI] Reason: Fertilizer is scheduled after early establishment, then repeated by growth window for better nutrient uptake. Soil type (loamy) is considered in nutrient timing. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63d33.95585847",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-07-16",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e62830.48110144",
+            "title": "Grain Filling Stage",
+            "type": "corn-stage",
+            "date": "2026-07-17",
+            "time": "06:40",
+            "notes": "[AutoAI] Reason: Stage transition: Grain Filling Stage. Align watering, fertilizer, and monitoring with this growth phase. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63df0.68849820",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-07-19",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63ec9.76125203",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-07-22",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e63f83.37454582",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-07-25",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e64036.58223749",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-07-28",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e640f9.05797261",
+            "title": "Watering Task",
+            "type": "watering",
+            "date": "2026-07-31",
+            "time": "06:30",
+            "notes": "[AutoAI] Reason: Maintain stable soil moisture during Seedling stage. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        },
+        {
+            "id": "task_69f16056e62900.92470147",
+            "title": "Harvest Stage",
+            "type": "corn-stage",
+            "date": "2026-08-01",
+            "time": "06:40",
+            "notes": "[AutoAI] Reason: Stage transition: Harvest Stage. Align watering, fertilizer, and monitoring with this growth phase. | Priority: Medium",
+            "priority": "medium",
+            "completed": false
+        }
+    ]
+}

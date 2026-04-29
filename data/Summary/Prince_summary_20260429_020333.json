@@ -1,0 +1,102 @@
+{
+    "meta": {
+        "users_id": 21,
+        "profile": "Prince",
+        "created_at": "2026-04-29T02:03:33+02:00"
+    },
+    "presentation": {
+        "header": {
+            "title": "HARVEST OVERVIEW",
+            "heroTitle": "Final crop snapshot",
+            "heroCopy": "Everything important from this planting cycle, shown in one clean view before you continue to comparison and the next cycle."
+        },
+        "badge": "Harvest Ready"
+    },
+    "profile": {
+        "cornType": "Baby Corn",
+        "variety": "Early Hybrid Baby Corn 1",
+        "plantingDate": "Jan 28, 2026",
+        "harvestDate": "Mar 18, 2026",
+        "farmLocation": "Carlosa, Calatagan, Batangas",
+        "areaPlanted": "1 hectare(s)",
+        "soilType": "loamy",
+        "plantingDensity": "1",
+        "seedsPerHole": "2",
+        "estimatedSeeds": "16,000 - 20,000"
+    },
+    "forecast": {
+        "income": "\u20b170,700",
+        "cost": "\u20b14,000",
+        "profit": "\u20b166,700"
+    },
+    "summary": {
+        "profile": null,
+        "forecast": null,
+        "step1": {
+            "hero": {
+                "badge": "Harvest Ready",
+                "stage": "Stage 19 - Harvest",
+                "progress": "100%",
+                "tasks": "20/20",
+                "profit": "\u20b166,700"
+            },
+            "profile": {
+                "cornType": "Baby Corn",
+                "variety": "Early Hybrid Baby Corn 1",
+                "plantingDate": "Jan 28, 2026",
+                "harvestDate": "Mar 18, 2026",
+                "farmLocation": "Carlosa, Calatagan, Batangas",
+                "areaPlanted": "1 hectare(s)",
+                "soilType": "loamy",
+                "plantingDensity": "1",
+                "seedsPerHole": "2",
+                "estimatedSeeds": "16,000 - 20,000"
+            },
+            "progress": {
+                "currentStage": "Stage 19 - Harvest",
+                "growthProgress": "100%",
+                "tasksThisWeek": "0 completed, 0 pending",
+                "tasksOverall": "0 completed, 0 pending"
+            },
+            "finance": {
+                "estimatedIncome": "\u20b170,700",
+                "totalCost": "\u20b14,000",
+                "netProfit": "\u20b166,700",
+                "marketUpdated": "Apr 18, 2026"
+            },
+            "health": {
+                "latestPestDetection": "No pest detection history yet",
+                "calendarUpdated": "Apr 29, 2026 02:02 AM"
+            }
+        },
+        "step2": {
+            "prediction": {
+                "income": "\u20b170,700",
+                "cost": "\u20b14,000",
+                "profit": "\u20b166,700"
+            },
+            "actual": {
+                "income": null,
+                "cost": "\u20b14,000",
+                "profit": "--"
+            },
+            "difference": {
+                "income": "--",
+                "cost": "\u20b10",
+                "profit": "--"
+            },
+            "accuracy": {
+                "income": "--",
+                "cost": "100.0%",
+                "profit": "--"
+            },
+            "analysis": {
+                "averageAccuracy": "100.0%",
+                "biggestVariance": "\u20b10 on cost",
+                "overallResult": "Enter the actual income to compare this harvest.",
+                "note": "Enter the actual income to see the difference and accuracy of this cycle."
+            }
+        },
+        "generated_at": "2026-04-29T00:03:33.342Z"
+    }
+}
