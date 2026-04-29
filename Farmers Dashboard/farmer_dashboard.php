@@ -4905,7 +4905,6 @@ $startInFeatureView = $requestedDashboardView === "features";
 						</button>
 					</div>
 				</div>
-				</div>
 			</div>
 		</header>
 
