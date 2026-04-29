@@ -608,7 +608,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $postAction === 'save_result') {
 
                             if ($ok) {
                                 $_SESSION['pest_save_msg'] = 'Result saved to history.';
-                                header('Location: farmer_dashboard.php');
+                                header('Location: farmer_dashboard.php?view=features');
                                 exit;
                             } else {
                                 $save_error = 'Saving failed. ' . ($stmtError !== '' ? $stmtError : 'Please try again.');
@@ -1961,7 +1961,7 @@ try {
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7 1.5-1.5-5.5-5.5 5.5-5.5z"></path></svg>
             </button>
             <div class="head-title-wrap">
-                <h1 class="page-title">Corn Scanner AI Pro (V3)</h1>
+                <h1 class="page-title">Corn Scanner</h1>
                 <p class="page-sub">Identifying Diseases & Pests in Real-time</p>
             </div>
             <button id="openHistoryBtn" class="history-icon-btn" type="button" aria-label="Open saved history" title="Saved History">
@@ -2163,7 +2163,7 @@ try {
 <div class="modal-mask" id="saveConfirmMask"></div>
 <div class="custom-confirm-modal" id="saveConfirmModal">
     <h3 class="confirm-title">Save Results</h3>
-    <p class="confirm-desc">Are you sure you want to save this analysis result? You will be redirected to the dashboard.</p>
+    <p class="confirm-desc">Are you sure you want to save this analysis result? You will be redirected back to the dashboard modules.</p>
     <div class="d-flex justify-content-end gap-2">
         <button class="btn btn-outline-secondary" onclick="hideSaveConfirm()" type="button" style="border-radius: 10px; font-weight: 600; padding: 8px 16px;">Cancel</button>
         <button class="btn btn-danger confirm-btn-save" onclick="executeSave()" type="button" style="border-radius: 10px; font-weight: 600; padding: 8px 16px; background-color: #ef4444; border: none; color: white;">Save</button>
