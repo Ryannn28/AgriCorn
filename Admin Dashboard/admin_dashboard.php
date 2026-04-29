@@ -37,6 +37,44 @@ $mostCornTypeCounts = [];
 $mostCornVarietyLabels = [];
 $mostCornVarietyCounts = [];
 
+// --- DYNAMIC FILTER LOGIC ---
+$range = $_GET['range'] ?? 'all';
+$validRanges = ['7d', '30d', '90d', 'all'];
+if (!in_array($range, $validRanges)) { $range = 'all'; }
+
+$dateSqlFilter = "";
+$rangeLabel = "All Time Data";
+if ($range === '7d') {
+    $dateSqlFilter = " AND date_created >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
+    $rangeLabel = "Last 7 Days";
+} elseif ($range === '30d') {
+    $dateSqlFilter = " AND date_created >= DATE_SUB(NOW(), INTERVAL 30 DAY)";
+    $rangeLabel = "Last 30 Days";
+} elseif ($range === '90d') {
+    $dateSqlFilter = " AND date_created >= DATE_SUB(NOW(), INTERVAL 90 DAY)";
+    $rangeLabel = "Last 90 Days";
+}
+
+// --- MONTH RANGE FILTER FOR GROWTH TREND ---
+$monthsCount = (int) ($_GET['months'] ?? 6);
+if ($monthsCount < 3) $monthsCount = 3;
+if ($monthsCount > 12) $monthsCount = 12;
+
+// --- SPECIFIC MONTH FILTER ---
+$selectedMonth = $_GET['month'] ?? '';
+$monthOptions = [];
+for ($i = 0; $i < 12; $i++) {
+    $m = date("Y-m", strtotime("first day of this month -$i months"));
+    $mLabel = date("F Y", strtotime("first day of this month -$i months"));
+    $monthOptions[$m] = $mLabel;
+}
+
+if ($selectedMonth !== '' && isset($monthOptions[$selectedMonth])) {
+    $dateSqlFilter = " AND DATE_FORMAT(date_created, '%Y-%m') = '$selectedMonth'";
+    $rangeLabel = $monthOptions[$selectedMonth];
+}
+// ----------------------------
+
 if (!function_exists('formatLoginTimeAgo')) {
     function formatLoginTimeAgo($datetimeValue)
     {
@@ -212,6 +250,7 @@ try {
                 ELSE 'Added'
             END AS status_label
         FROM guide_module
+        WHERE 1=1 {$dateSqlFilter}
         ORDER BY COALESCE(last_updated, date_created) DESC, guide_id DESC
         LIMIT 5";
     $topGuideResult = $conn->query($topGuideSql);
@@ -1355,8 +1394,8 @@ try {
                         <article class="panel pad">
                             <div class="panel-header">
                                 <div>
-                                    <h3 class="panel-title">Top Performing Guides</h3>
-                                    <p class="panel-subtitle">Latest farming guides from the database</p>
+                                    <h3 class="panel-title">Latest Uploaded Farming Guides</h3>
+                                    <p class="panel-subtitle">Newest farming guides based on your selection</p>
                                 </div>
                             </div>
                             <div class="list-wrap">
@@ -1799,6 +1838,10 @@ try {
                 }
             });
         })();
+    </script>
+
+</body>
+</html>
     </script>
 
 </body>

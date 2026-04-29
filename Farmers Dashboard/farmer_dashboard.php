@@ -1603,6 +1603,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 			font-weight: 600;
 			color: #495a4c;
 			white-space: nowrap;
+			width: fit-content;
 		}
 
 		.status-good {
@@ -2017,6 +2018,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 			border: 1px solid rgba(127, 182, 133, 0.28);
 			background: rgba(255, 255, 255, 0.72);
 			color: #46634a;
+			width: fit-content;
 		}
 
 		.feature-icon {
@@ -4304,7 +4306,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 			</div>
 
 			<div class="row g-2 g-md-4 mb-4">
-				<div class="col-6 col-md-6 col-xl-3">
+				<div class="col-12 col-md-6 col-xl-3">
 					<article class="stat-card p-3 p-md-4 h-100" style="background: linear-gradient(145deg, rgba(34,197,94,0.1), rgba(34,197,94,0.03));">
 						<div class="blur-orb" style="background: rgba(34,197,94,0.2);"></div>
 						<div class="d-flex align-items-start justify-content-between mb-3">
@@ -4319,7 +4321,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 					</article>
 				</div>
 
-				<div class="col-6 col-md-6 col-xl-3">
+				<div class="col-12 col-md-6 col-xl-3">
 					<article class="stat-card p-3 p-md-4 h-100" style="background: linear-gradient(145deg, rgba(59,130,246,0.1), rgba(59,130,246,0.03));">
 						<div class="blur-orb" style="background: rgba(59,130,246,0.2);"></div>
 						<div class="d-flex align-items-start justify-content-between mb-3">
@@ -4334,7 +4336,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 					</article>
 				</div>
 
-				<div class="col-6 col-md-6 col-xl-3">
+				<div class="col-12 col-md-6 col-xl-3">
 					<article class="stat-card p-3 p-md-4 h-100" style="background: linear-gradient(145deg, rgba(245,158,11,0.1), rgba(245,158,11,0.03));">
 						<div class="blur-orb" style="background: rgba(245,158,11,0.22);"></div>
 						<div class="d-flex align-items-start justify-content-between mb-3">
@@ -4350,7 +4352,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 					</article>
 				</div>
 
-				<div class="col-6 col-md-6 col-xl-3">
+				<div class="col-12 col-md-6 col-xl-3">
 					<article class="stat-card p-3 p-md-4 h-100" style="background: linear-gradient(145deg, rgba(249,115,22,0.1), rgba(249,115,22,0.03));">
 						<div class="blur-orb" style="background: rgba(249,115,22,0.2);"></div>
 						<div class="d-flex align-items-start justify-content-between mb-3">
@@ -6675,7 +6677,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 			for (var i = 0; i < featureCards.length; i += 1) {
 				var f = featureCards[i];
 				var col = document.createElement("div");
-				col.className = "col-6 col-md-6 col-xl-4";
+				col.className = "col-12 col-md-6 col-xl-4";
 				col.innerHTML = '' +
 					'<article class="feature-card" style="background:' + f.bg + ';">' +
 						'<div class="blur-orb" style="background:' + f.blur + ';"></div>' +
