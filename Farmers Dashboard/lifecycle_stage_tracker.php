@@ -2448,20 +2448,20 @@ foreach ($stages as $stage) {
 					3: "Emergence (VE).png",
 					4: "V1 - First leaf with visible collar.png",
 					5: "V2 - Second leaf.png",
-					6: "V2 - Third leaf.png",
+					6: "V3 - Third leaf.png",
 					7: "V4 - Fourth leaf.png",
-					8: "V5 - Fifth leaf.png",
+					8: "V5- Fifth leaf.png",
 					9: "V6 - Sixth leaf.png",
 					10: "V7 - Seventh leaf.png",
 					11: "V8 - Eighth leaf.png",
 					12: "V9 - Ninth leaf.png",
 					13: "R1 - Silking.png",
-					14: "R1 - Silking.png",
-					15: "R1 - Silking.png",
-					16: "R1 - Silking.png",
-					17: "R1 - Silking.png",
-					18: "R1 - Silking.png",
-					19: "R1 - Silking.png"
+					14: "R2 - Blister.png",
+					15: "R3 - Milk.png",
+					16: "R4 - Dough.png",
+					17: "R5 - Dent.png",
+					18: "R6 - Physiological Maturity.png",
+					19: "Harvest.png"
 				};
 
 				return byNumber[Number(stage.number)] || null;
