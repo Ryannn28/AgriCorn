@@ -4303,8 +4303,8 @@ $startInFeatureView = $requestedDashboardView === "features";
 				</button>
 			</div>
 
-			<div class="row g-4 mb-4">
-				<div class="col-12 col-md-6 col-xl-3">
+			<div class="row g-2 g-md-4 mb-4">
+				<div class="col-6 col-md-6 col-xl-3">
 					<article class="stat-card p-3 p-md-4 h-100" style="background: linear-gradient(145deg, rgba(34,197,94,0.1), rgba(34,197,94,0.03));">
 						<div class="blur-orb" style="background: rgba(34,197,94,0.2);"></div>
 						<div class="d-flex align-items-start justify-content-between mb-3">
@@ -4319,7 +4319,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 					</article>
 				</div>
 
-				<div class="col-12 col-md-6 col-xl-3">
+				<div class="col-6 col-md-6 col-xl-3">
 					<article class="stat-card p-3 p-md-4 h-100" style="background: linear-gradient(145deg, rgba(59,130,246,0.1), rgba(59,130,246,0.03));">
 						<div class="blur-orb" style="background: rgba(59,130,246,0.2);"></div>
 						<div class="d-flex align-items-start justify-content-between mb-3">
@@ -4334,7 +4334,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 					</article>
 				</div>
 
-				<div class="col-12 col-md-6 col-xl-3">
+				<div class="col-6 col-md-6 col-xl-3">
 					<article class="stat-card p-3 p-md-4 h-100" style="background: linear-gradient(145deg, rgba(245,158,11,0.1), rgba(245,158,11,0.03));">
 						<div class="blur-orb" style="background: rgba(245,158,11,0.22);"></div>
 						<div class="d-flex align-items-start justify-content-between mb-3">
@@ -4350,7 +4350,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 					</article>
 				</div>
 
-				<div class="col-12 col-md-6 col-xl-3">
+				<div class="col-6 col-md-6 col-xl-3">
 					<article class="stat-card p-3 p-md-4 h-100" style="background: linear-gradient(145deg, rgba(249,115,22,0.1), rgba(249,115,22,0.03));">
 						<div class="blur-orb" style="background: rgba(249,115,22,0.2);"></div>
 						<div class="d-flex align-items-start justify-content-between mb-3">
@@ -6038,7 +6038,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 				{
 					title: "Pest & Disease Identification",
 					description: "Detect common pests and diseases, then view suggested treatment actions.",
-					tag: "Crop Health",
+					tag: "Crop Scanner",
 					bg: "linear-gradient(145deg, rgba(127,182,133,0.1), rgba(127,182,133,0.03))",
 					iconBg: "rgba(127,182,133,0.18)",
 					iconColor: "#5f9a65",
@@ -6047,9 +6047,9 @@ $startInFeatureView = $requestedDashboardView === "features";
 					icon: "bug"
 				},
 				{
-					title: "Machine Learning Growth Prediction",
+					title: "Growth and Harvest Forecasting",
 					description: "Use model-based forecasts for growth trend, yield outlook, and harvest window.",
-					tag: "AI Forecast",
+					tag: "Forecast",
 					bg: "linear-gradient(145deg, rgba(255,229,153,0.28), rgba(255,229,153,0.08))",
 					iconBg: "rgba(255,229,153,0.55)",
 					iconColor: "#8a6821",
@@ -6666,7 +6666,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 					return;
 				}
 
-				if (title === "Machine Learning Growth Prediction") {
+				if (title === "Growth and Harvest Forecasting") {
 					window.location.href = "machine_learning.php?from=features";
 					return;
 				}
@@ -6675,7 +6675,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 			for (var i = 0; i < featureCards.length; i += 1) {
 				var f = featureCards[i];
 				var col = document.createElement("div");
-				col.className = "col-12 col-md-6 col-xl-4";
+				col.className = "col-6 col-md-6 col-xl-4";
 				col.innerHTML = '' +
 					'<article class="feature-card" style="background:' + f.bg + ';">' +
 						'<div class="blur-orb" style="background:' + f.blur + ';"></div>' +
@@ -6985,15 +6985,43 @@ $startInFeatureView = $requestedDashboardView === "features";
 
 				const iconBase = "https://cdn.jsdelivr.net/gh/mrdarrengriffin/google-weather-icons@master/sets/set-2";
 				const weatherCodes = {
+					// Clear & Cloudy
 					0: { label: "Clear Sky", img: `${iconBase}/sunny.png`, nightImg: `${iconBase}/clear_night.png` },
 					1: { label: "Mainly Clear", img: `${iconBase}/sunny.png`, nightImg: `${iconBase}/clear_night.png` },
 					2: { label: "Partly Cloudy", img: `${iconBase}/partly_cloudy.png`, nightImg: `${iconBase}/partly_cloudy_night.png` },
 					3: { label: "Overcast", img: `${iconBase}/cloudy.png` },
-					45: { label: "Fog / Mist", img: `${iconBase}/fog.png` },
-					51: { label: "Drizzle", img: `${iconBase}/rain.png` },
-					61: { label: "Rainy", img: `${iconBase}/rain.png` },
-					80: { label: "Showers", img: `${iconBase}/heavy_rain.png` },
-					95: { label: "Thunderstorm", img: `${iconBase}/thunderstorms.png` }
+					// Fog
+					45: { label: "Fog", img: `${iconBase}/haze_fog_dust_smoke.png` },
+					48: { label: "Fog", img: `${iconBase}/haze_fog_dust_smoke.png` },
+					// Drizzle
+					51: { label: "Light Drizzle", img: `${iconBase}/drizzle.png` },
+					53: { label: "Drizzle", img: `${iconBase}/drizzle.png` },
+					55: { label: "Heavy Drizzle", img: `${iconBase}/drizzle.png` },
+					56: { label: "Freezing Drizzle", img: `${iconBase}/sleet_hail.png` },
+					57: { label: "Freezing Drizzle", img: `${iconBase}/sleet_hail.png` },
+					// Rain
+					61: { label: "Slight Rain", img: `${iconBase}/showers_rain.png` },
+					63: { label: "Moderate Rain", img: `${iconBase}/showers_rain.png` },
+					65: { label: "Heavy Rain", img: `${iconBase}/heavy_rain.png` },
+					// Freezing
+					66: { label: "Freezing Rain", img: `${iconBase}/sleet_hail.png` },
+					67: { label: "Freezing Rain", img: `${iconBase}/sleet_hail.png` },
+					// Snow
+					71: { label: "Slight Snow", img: `${iconBase}/snow.png` },
+					73: { label: "Moderate Snow", img: `${iconBase}/snow.png` },
+					75: { label: "Heavy Snow", img: `${iconBase}/heavy_snow.png` },
+					77: { label: "Snow Grains", img: `${iconBase}/snow.png` },
+					// Showers
+					80: { label: "Slight Showers", img: `${iconBase}/showers_rain.png` },
+					81: { label: "Showers", img: `${iconBase}/showers_rain.png` },
+					82: { label: "Violent Showers", img: `${iconBase}/heavy_rain.png` },
+					// Snow Showers
+					85: { label: "Snow Showers", img: `${iconBase}/snow_showers_snow.png` },
+					86: { label: "Heavy Snow Showers", img: `${iconBase}/snow_showers_snow.png` },
+					// Thunderstorm
+					95: { label: "Thunderstorm", img: `${iconBase}/strong_tstorms.png` },
+					96: { label: "Thunderstorm", img: `${iconBase}/strong_tstorms.png` },
+					99: { label: "Thunderstorm", img: `${iconBase}/strong_tstorms.png` }
 				};
 
 				function isNight() {

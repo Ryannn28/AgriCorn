@@ -1143,6 +1143,34 @@ if ($requested_action === 'financial_snapshot') {
             justify-content: center;
             font-size: 1.2rem;
         }
+        .content-actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .accuracy-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(62, 124, 214, 0.2);
+            background: linear-gradient(135deg, rgba(62, 124, 214, 0.1), rgba(127, 182, 133, 0.08));
+            height: 46px;
+        }
+        .adjust-btn {
+            height: 46px;
+            border-radius: 12px;
+            padding: 0 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
         @media (max-width: 767px) {
             .head-inner,
             .page-inner {
@@ -1157,11 +1185,20 @@ if ($requested_action === 'financial_snapshot') {
                 grid-template-columns: minmax(0, 1fr);
             }
             .content-actions {
-                justify-content: stretch;
+                flex-wrap: nowrap !important;
+                align-items: stretch !important;
+                gap: 10px !important;
             }
-            .content-actions .btn {
-                width: 100%;
-                justify-content: center;
+            .accuracy-badge,
+            .adjust-btn {
+                flex: 1 !important;
+                min-width: 0 !important;
+                padding: 8px !important;
+                font-size: 0.78rem !important;
+                justify-content: center !important;
+            }
+            .accuracy-badge .progress {
+                display: none !important;
             }
         }
     </style>
@@ -1196,18 +1233,18 @@ if ($requested_action === 'financial_snapshot') {
             <strong>AI Model Error:</strong> <?= htmlspecialchars($error) ?>
         </div>
     <?php else: ?>
-        <div class="content-actions" style="justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
-            <div style="display: inline-flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 12px; border: 1px solid rgba(62, 124, 214, 0.2); background: linear-gradient(135deg, rgba(62, 124, 214, 0.1), rgba(127, 182, 133, 0.08)); min-width: 220px;">
+        <div class="content-actions">
+            <div class="accuracy-badge">
                 <i class="bi bi-cpu-fill" style="color: #3e7cd6; font-size: 1rem;"></i>
                 <div style="line-height: 1.2;">
-                    <div style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #5f6f63;">ML Accuracy</div>
-                    <div style="font-size: 1rem; font-weight: 700; color: #2c4f8e;"><?= htmlspecialchars($prediction['confidence']) ?></div>
+                    <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #5f6f63;">Accuracy</div>
+                    <div style="font-size: 0.95rem; font-weight: 700; color: #2c4f8e;"><?= htmlspecialchars($prediction['confidence']) ?></div>
                 </div>
-                <div class="progress" style="height: 6px; width: 90px; border-radius: 6px; background: rgba(62, 124, 214, 0.14); overflow: hidden; margin-left: auto;">
+                <div class="progress" style="height: 6px; width: 60px; border-radius: 6px; background: rgba(62, 124, 214, 0.14); overflow: hidden; margin-left: 12px;">
                     <div class="progress-bar" style="background: #3e7cd6; width: <?= $prediction['confidence'] ?>; border-radius: 6px;"></div>
                 </div>
             </div>
-            <button class="btn theme-btn fw-bold d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#priceSettingsModal" type="button">
+            <button class="btn theme-btn adjust-btn" data-bs-toggle="modal" data-bs-target="#priceSettingsModal" type="button">
                 <i class="bi bi-gear-fill"></i> Adjust Prices
             </button>
         </div>
