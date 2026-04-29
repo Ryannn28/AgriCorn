@@ -610,6 +610,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login_submit"])) {
 			transform: none;
 		}
 
+		.password-toggle {
+			position: absolute;
+			right: 12px;
+			top: 50%;
+			transform: translateY(-50%);
+			background: none;
+			border: none;
+			padding: 0;
+			cursor: pointer;
+			color: var(--primary);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			opacity: 0.7;
+			transition: opacity 0.2s;
+			z-index: 10;
+		}
+		.password-toggle:hover {
+			opacity: 1;
+		}
+		.password-toggle svg {
+			width: 18px;
+			height: 18px;
+			position: static !important;
+			transform: none !important;
+			fill: none !important;
+			stroke: currentColor !important;
+		}
+
 		.divider {
 			position: relative;
 			margin: 4px 0;
@@ -823,7 +852,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login_submit"])) {
 								<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
 									<path d="M17 8h-1V6a4 4 0 1 0-8 0v2H7a2 2 0 0 0-2 2v10h14V10a2 2 0 0 0-2-2zm-7-2a2 2 0 1 1 4 0v2h-4V6zm2 8a2 2 0 0 1 1 3.7V19h-2v-1.3a2 2 0 0 1 1-3.7z"></path>
 								</svg>
-								<input class="input" id="loginPassword" name="password" type="password" placeholder="Enter your password" required>
+								<input class="input" id="loginPassword" name="password" type="password" placeholder="Enter your password" required style="padding-right: 42px;">
+								<button type="button" class="password-toggle" onclick="togglePasswordVisibility('loginPassword', this)">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+								</button>
 							</div>
 						</div>
 
@@ -884,7 +916,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login_submit"])) {
 								<svg id="iconSignupPassword" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
 									<path d="M17 8h-1V6a4 4 0 1 0-8 0v2H7a2 2 0 0 0-2 2v10h14V10a2 2 0 0 0-2-2zm-7-2a2 2 0 1 1 4 0v2h-4V6zm2 8a2 2 0 0 1 1 3.7V19h-2v-1.3a2 2 0 0 1 1-3.7z"></path>
 								</svg>
-								<input class="input" id="signupPassword" name="signup_password" type="password" placeholder="Create a password" minlength="6" required>
+								<input class="input" id="signupPassword" name="signup_password" type="password" placeholder="Create a password" minlength="6" required style="padding-right: 42px;">
+								<button type="button" class="password-toggle" onclick="togglePasswordVisibility('signupPassword', this)">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+								</button>
 							</div>
 							<p class="error-text" id="passwordLengthError">Password must be at least 6 characters</p>
 
@@ -905,7 +940,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login_submit"])) {
 								<svg id="iconSignupConfirm" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
 									<path d="M17 8h-1V6a4 4 0 1 0-8 0v2H7a2 2 0 0 0-2 2v10h14V10a2 2 0 0 0-2-2zm-7-2a2 2 0 1 1 4 0v2h-4V6zm2 8a2 2 0 0 1 1 3.7V19h-2v-1.3a2 2 0 0 1 1-3.7z"></path>
 								</svg>
-								<input class="input" id="signupConfirm" name="confirm_password" type="password" placeholder="Confirm your password" required>
+								<input class="input" id="signupConfirm" name="confirm_password" type="password" placeholder="Confirm your password" required style="padding-right: 42px;">
+								<button type="button" class="password-toggle" onclick="togglePasswordVisibility('signupConfirm', this)">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+								</button>
 							</div>
 							<p class="error-text" id="passwordError">Passwords do not match</p>
 						</div>
@@ -938,6 +976,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login_submit"])) {
 	</div>
 
 	<script>
+		function togglePasswordVisibility(inputId, btn) {
+			var input = document.getElementById(inputId);
+			var icon = btn.querySelector('svg');
+			if (input.type === "password") {
+				input.type = "text";
+				btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+			} else {
+				input.type = "password";
+				btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+			}
+		}
+
 		(function () {
 			var tabLogin = document.getElementById("tabLogin");
 			var tabSignup = document.getElementById("tabSignup");

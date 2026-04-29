@@ -18,9 +18,14 @@ try {
 <head>
 		<style>
 			.faq-accordion {
-				display: flex;
-				flex-direction: column;
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
 				gap: 18px;
+			}
+			@media (max-width: 900px) {
+				.faq-accordion {
+					grid-template-columns: 1fr;
+				}
 			}
 			.faq-item {
 				background: #f7faf7;
@@ -177,13 +182,18 @@ try {
 		body {
 			margin: 0;
 			font-family: 'Inter', Arial, Helvetica, sans-serif;
-			background-image: linear-gradient(135deg, rgba(127, 182, 133, 0.08), rgba(250, 253, 247, 1), rgba(255, 229, 153, 0.14));
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: center;
-			background-attachment: fixed;
+			background: linear-gradient(rgba(240, 253, 244, 0.92), rgba(254, 252, 232, 0.92)), url('cornbg.jpg') center/cover fixed;
 			color: #222;
 			overflow-x: hidden;
+		}
+		.section-title {
+			font-size: 3.2rem;
+			font-weight: 800;
+			letter-spacing: -0.5px;
+			line-height: 1.15;
+			color: #2f3e35;
+			margin-bottom: 12px;
+			text-align: center;
 		}
 		*, *::before, *::after {
 			box-sizing: border-box;
@@ -196,8 +206,10 @@ try {
 			   align-items: center;
 			   justify-content: space-between;
 			   padding: 18px 48px;
-			   background: linear-gradient(90deg, rgb(204, 226, 206), rgb(210, 229, 212), rgb(255, 244, 214));
-			   border-bottom: 1px solid rgba(127, 182, 133, 0.2);
+			   backdrop-filter: blur(8px);
+			   -webkit-backdrop-filter: blur(8px);
+			   background: linear-gradient(90deg, rgba(127, 182, 133, 0.4), rgba(127, 182, 133, 0.35), rgba(255, 229, 153, 0.4));
+			   border-bottom: 1px solid rgba(127, 182, 133, 0.3);
 			   box-shadow: 0 4px 16px rgba(34, 58, 39, 0.08);
 			   position: sticky;
 			   top: 0;
@@ -235,19 +247,61 @@ try {
 			color: #f6c941;
 			font-weight: 500;
 		}
-		.navbar-menu {
-			display: flex;
-			gap: 16px;
-			font-size: 0.95rem;
-		}
 		.navbar-menu a {
 			color: #444;
 			text-decoration: none;
 			font-weight: 500;
 			transition: color .2s;
+			white-space: nowrap;
 		}
 		.navbar-menu a:hover {
 			color: #219150;
+		}
+		.navbar-logo {
+			flex: 1;
+		}
+		.navbar-menu {
+			display: flex;
+			gap: 24px;
+			font-size: 0.95rem;
+			flex: 2;
+			justify-content: center;
+		}
+		.navbar-actions {
+			flex: 1;
+			display: flex;
+			justify-content: flex-end;
+		}
+		.navbar-btn {
+			background: linear-gradient(90deg, #21b36a 0%, #176b3a 100%);
+			color: #ffffff !important;
+			border: none;
+			border-radius: 10px;
+			padding: 10px 24px;
+			font-size: 0.95rem;
+			font-weight: 700;
+			text-decoration: none;
+			transition: transform .3s, box-shadow .3s;
+			box-shadow: 0 4px 12px rgba(33, 179, 106, 0.2);
+			white-space: nowrap;
+		}
+		.navbar-btn:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 16px rgba(33, 179, 106, 0.3);
+		}
+		@media (max-width: 1200px) {
+			.navbar-menu {
+				display: none;
+			}
+			.navbar-toggle {
+				display: flex;
+			}
+			.navbar-logo {
+				flex: 1;
+			}
+			.navbar-actions {
+				flex: 0;
+			}
 		}
 		.navbar-menu a:focus-visible,
 		.navbar-action:focus-visible,
@@ -448,7 +502,7 @@ try {
 		}
 		/* Why Choose Section */
 		   .why-section-container {
-			   background: linear-gradient(135deg, #f3fdf6 0%, #fefce8 100%);
+			   background: rgba(240, 253, 244, 0.85);
 			   border-radius: 32px;
 			   padding: 64px 40px;
 			   margin: 40px auto 20px auto;
@@ -535,6 +589,7 @@ try {
 		.how-section {
 			text-align: center;
 			padding-bottom: 40px;
+			background: transparent;
 		}
 		.how-title {
 			font-size: 3.2rem;
@@ -623,7 +678,7 @@ try {
 		/* Advanced Tech Section */
 		.tech-section {
 			padding: 80px 24px;
-			background: linear-gradient(135deg, #f3fdf6 0%, #fefce8 100%);
+			background: transparent;
 		}
 		.tech-container {
 			max-width: 1100px;
@@ -725,7 +780,7 @@ try {
 		/* Built For Section */
 		.built-section {
 			padding: 100px 24px;
-			background: linear-gradient(rgba(240, 253, 244, 0.94), rgba(254, 252, 232, 0.94)), url('cornbg.jpg') center/cover no-repeat;
+			background: transparent;
 			position: relative;
 			border-top: 1px solid rgba(0,0,0,0.03);
 			border-bottom: 1px solid rgba(0,0,0,0.03);
@@ -1138,13 +1193,13 @@ try {
 				border-radius: 14px;
 			}
 
-			.features-headline,
+			.section-title,
 			.why-title,
 			.how-title,
 			.tech-title,
 			.built-title,
 			.sdg-title {
-				font-size: clamp(1.55rem, 6vw, 2rem);
+				font-size: clamp(1.55rem, 6vw, 2rem) !important;
 			}
 
 			.features-subtext,
@@ -1162,11 +1217,14 @@ try {
 			.why-grid,
 			.how-grid,
 			.tech-grid,
-			.built-container,
 			.built-stats-grid,
 			.sdg-grid {
 				grid-template-columns: repeat(2, minmax(0, 1fr));
 				gap: 14px;
+			}
+			.built-container {
+				grid-template-columns: 1fr;
+				gap: 32px;
 			}
 
 			.feature-card,
@@ -1310,7 +1368,7 @@ try {
 				font-size: 0.82rem;
 			}
 
-			.stat-value {
+			.stat-value, .b-stat-value {
 				font-size: 1.55rem;
 			}
 
@@ -1391,6 +1449,9 @@ try {
 			<a href="#sdg">SDG</a>
 			<a href="#faq">FAQ</a>
 		</div>
+		<div class="navbar-actions">
+			<a href="login.php" class="navbar-btn">Login</a>
+		</div>
 	</nav>
 	<section class="hero main-section">
 		<div class="hero-badge">
@@ -1398,7 +1459,7 @@ try {
 			AI-Powered Farming Platform
 		</div>
 		<h1 class="hero-title">Experience <span>AgriCorn</span></h1>
-		<div class="hero-desc">Transform your corn farming with intelligent planning, real-time monitoring, and AI-powered insights. From seed to harvest, we empower farmers to grow smarter.</div>
+		<div class="hero-desc">Transform corn farming in Calatagan through intelligent planning, crop monitoring, and data-driven support. From seed to harvest, AgriCorn Planner helps local farmers grow smarter.</div>
 		<a href="login.php" class="hero-btn">Get Started</a>
 		<div class="stats-row reveal">
 			<div class="stat-box">
@@ -1407,14 +1468,19 @@ try {
 				<div class="stat-label">Active Farmers</div>
 			</div>
 			<div class="stat-box">
-				<svg class="stat-icon" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
-				<div class="stat-value">5000+</div>
-				<div class="stat-label">Acres Managed</div>
+				<svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+				<div class="stat-value">25</div>
+				<div class="stat-label">Barangay of Calatagan</div>
 			</div>
 			<div class="stat-box">
-				<svg class="stat-icon" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-				<div class="stat-value">30%</div>
-				<div class="stat-label">Yield Increase</div>
+				<svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M12 2c-1.5 0-3 1.5-3 4s.5 6 3 10c2.5-4 3-7.5 3-10s-1.5-4-3-4z"></path>
+					<path d="M9 6c-1 0-2 1-2 3s.5 4 2 6"></path>
+					<path d="M15 6c1 0 2 1 2 3s-.5 4-2 6"></path>
+					<path d="M12 16v6"></path>
+				</svg>
+				<div class="stat-value">10+</div>
+				<div class="stat-label">Corn Varieties</div>
 			</div>
 			<div class="stat-box">
 				<svg class="stat-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -1427,44 +1493,56 @@ try {
 		   <!-- Features Section -->
 		   <section class="features-section main-section reveal" id="features" style="background: transparent;">
 			   <div style="text-align:center;">
-				   <h2 style="font-size:3.2rem;font-weight:800;letter-spacing:-0.5px;line-height:1.15;margin:0 0 12px 0;color:#2f3e35;">
+				   <h2 class="section-title">
 					   Powerful Features
 				   </h2>
 				   <div style="color:#000;font-size:1.25rem;margin:18px 0 38px 0;max-width:700px;margin-left:auto;margin-right:auto;">
-					   Everything you need to optimize your corn farming operations in one comprehensive platform
+					   Everything farmers need in one platform.
 				   </div>
 				<div class="features-grid-sync">
-				   <div class="feature-card green-theme">
-					   <div class="feature-icon">📊</div>
-					   <div style="font-size:1.18rem;font-weight:700;margin-bottom:8px;color:#222;">Corn Planting Profile</div>
-					   <div style="color:#444;font-size:1.01rem;line-height:1.6;">Manage your corn varieties, planting dates, and field information.</div>
+			   <div class="feature-card green-theme" style="align-items:center;text-align:center;">
+				   <div class="feature-icon" style="display:flex;align-items:center;justify-content:center;">
+				   		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
 				   </div>
-				   <div class="feature-card yellow-theme">
-					   <div class="feature-icon">🌱</div>
-					   <div style="font-size:1.18rem;font-weight:700;margin-bottom:8px;color:#222;">Lifecycle Stage Tracker</div>
-					   <div style="color:#444;font-size:1.01rem;line-height:1.6;">Track and monitor each growth stage from seed to harvest.</div>
+				   <div style="font-size:1.18rem;font-weight:700;margin-bottom:8px;color:#222;">Corn Planting Profile</div>
+				   <div style="color:#444;font-size:1.01rem;line-height:1.6;">Manage planting data, varieties, costs, and farm records.</div>
+			   </div>
+			   <div class="feature-card yellow-theme" style="align-items:center;text-align:center;">
+				   <div class="feature-icon" style="display:flex;align-items:center;justify-content:center;">
+				   		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
 				   </div>
-				   <div class="feature-card green-theme">
-					   <div class="feature-icon">🗓️</div>
-					   <div style="font-size:1.18rem;font-weight:700;margin-bottom:8px;color:#222;">Corn Care Calendar</div>
-					   <div style="color:#444;font-size:1.01rem;line-height:1.6;">Schedule and manage watering, fertilizing, and maintenance tasks.</div>
+				   <div style="font-size:1.18rem;font-weight:700;margin-bottom:8px;color:#222;">Lifecycle Stage Tracker</div>
+				   <div style="color:#444;font-size:1.01rem;line-height:1.6;">Monitor corn growth from seedling to harvest.</div>
+			   </div>
+			   <div class="feature-card green-theme" style="align-items:center;text-align:center;">
+				   <div class="feature-icon" style="display:flex;align-items:center;justify-content:center;">
+				   		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="16" y1="14" x2="16" y2="14"/></svg>
 				   </div>
-				   <div class="feature-card yellow-theme">
-					   <div class="feature-icon">🌾</div>
-					   <div style="font-size:1.18rem;font-weight:700;margin-bottom:8px;color:#222;">Corn Farming Guide</div>
-						   <div style="color:#444;font-size:1.01rem;line-height:1.6;">Access expert tips, best practices, and farming techniques.</div>
+				   <div style="font-size:1.18rem;font-weight:700;margin-bottom:8px;color:#222;">Corn Care Calendar</div>
+				   <div style="color:#444;font-size:1.01rem;line-height:1.6;">Track watering, fertilizer, and scheduled farm tasks.</div>
+			   </div>
+			   <div class="feature-card yellow-theme" style="align-items:center;text-align:center;">
+				   <div class="feature-icon" style="display:flex;align-items:center;justify-content:center;">
+				   		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
 				   </div>
-				   <div class="feature-card green-theme">
-					   <div class="feature-icon">🐛</div>
-					   <div style="font-size:1.18rem;font-weight:700;margin-bottom:8px;color:#222;">Pest & Disease Identification</div>
-					   <div style="color:#444;font-size:1.01rem;line-height:1.6;">Identify and get treatment recommendations for pests and diseases.</div>
+				   <div style="font-size:1.18rem;font-weight:700;margin-bottom:8px;color:#222;">Corn Farming Guide</div>
+				   <div style="color:#444;font-size:1.01rem;line-height:1.6;">Access practical guidance for corn production.</div>
+			   </div>
+			   <div class="feature-card green-theme" style="align-items:center;text-align:center;">
+				   <div class="feature-icon" style="display:flex;align-items:center;justify-content:center;">
+				   		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
 				   </div>
-				   <div class="feature-card yellow-theme">
-					   <div class="feature-icon">🤖</div>
-					   <div style="font-size:1.18rem;font-weight:700;margin-bottom:8px;color:#222;">Machine Learning Growth Prediction</div>
-					   <div style="color:#444;font-size:1.01rem;line-height:1.6;">AI-powered predictions for yield and optimal harvest timing.</div>
+				   <div style="font-size:1.18rem;font-weight:700;margin-bottom:8px;color:#222;">Pest and Disease Identification</div>
+				   <div style="color:#444;font-size:1.01rem;line-height:1.6;">Detect possible pest or disease issues with recommendations.</div>
+			   </div>
+			   <div class="feature-card yellow-theme" style="align-items:center;text-align:center;">
+				   <div class="feature-icon" style="display:flex;align-items:center;justify-content:center;">
+				   		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
 				   </div>
-				</div>
+				   <div style="font-size:1.18rem;font-weight:700;margin-bottom:8px;color:#222;">Machine Learning Growth Prediction</div>
+				   <div style="color:#444;font-size:1.01rem;line-height:1.6;">Estimate crop growth progress and harvest window.</div>
+			   </div>
+			</div>	</div>
 			</div>
 		</section>
 		   <div class="section-divider"></div>
@@ -1473,29 +1551,28 @@ try {
 			<section class="main-section reveal" id="why-us" style="background: transparent; padding-top: 0; padding-bottom: 0;">
 				<div class="why-section-container">
 					<h2 class="why-title">Why Choose <span>AgriCorn Planner</span>?</h2>
-					<div class="why-subtitle">Join thousands of farmers achieving better results</div>
+					<div class="why-subtitle">Designed to support local corn farmers in Calatagan</div>
 					
 					<div class="why-grid">
 						<div class="why-card">
-							<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-							<div class="why-text">Increase yields by up to 30% with data-driven insights</div>
+							<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H5a2 2 0 0 0-2 2v0a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v0a2 2 0 0 0-2-2h-4"/><rect x="9" y="3" width="6" height="14" rx="1"/></svg>
+							<div class="why-text">Improve decision-making through recorded farm data</div>
 						</div>
 						<div class="why-card">
-							<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-							<div class="why-text">Reduce crop loss through early pest detection</div>
+							<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+							<div class="why-text">Reduce crop risk through early pest monitoring</div>
 						</div>
 						<div class="why-card">
-							<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-							<div class="why-text">Save time with automated task scheduling</div>
+							<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+							<div class="why-text">Track farm activities using automated schedules</div>
 						</div>
 						<div class="why-card">
-							<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-							<div class="why-text">Access expert farming guidance anytime, anywhere</div>
+							<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+							<div class="why-text">Support smarter corn production in Calatagan</div>
 						</div>
 					</div>
 					
-					<a href="login.php" class="why-btn">Get Started Today</a>
-				</div>
+					</div>
 			</section>
 
 		   <!-- How It Works Section -->
@@ -1593,8 +1670,8 @@ try {
 
 	<!-- Built For Farmers Section -->
 	<section class="built-section reveal" id="built">
-		<h2 class="built-title">Built for Farmers, By <span>Agriculture Experts</span></h2>
-		<div class="built-desc">AgriCorn Planner combines decades of agricultural expertise with cutting-edge technology to create the ultimate corn farming companion.</div>
+		<h2 class="built-title">Built for <span>Corn Farmers in Calatagan</span></h2>
+		<div class="built-desc">AgriCorn Planner combines practical farming knowledge and digital tools to support local corn production.</div>
 		
 		<div class="built-container">
 			<!-- Left Content -->
@@ -1603,29 +1680,29 @@ try {
 				<div class="built-features">
 					<div class="b-feat-item">
 						<div class="b-feat-icon green">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
 						</div>
 						<div>
-							<div class="b-feat-title">Save Time & Effort</div>
-							<div class="b-feat-text">Automate routine tasks and focus on what matters most - growing quality corn.</div>
+							<div class="b-feat-title">🌱 Save Time and Effort</div>
+							<div class="b-feat-text">Automate record keeping and monitoring.</div>
 						</div>
 					</div>
 					<div class="b-feat-item">
 						<div class="b-feat-icon yellow">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
 						</div>
 						<div>
-							<div class="b-feat-title">Maximize Profitability</div>
-							<div class="b-feat-text">Reduce waste, optimize resources, and increase yields for better margins.</div>
+							<div class="b-feat-title">💰 Improve Profitability</div>
+							<div class="b-feat-text">Track expenses and production outcomes.</div>
 						</div>
 					</div>
 					<div class="b-feat-item">
 						<div class="b-feat-icon green">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
 						</div>
 						<div>
-							<div class="b-feat-title">Sustainable Farming</div>
-							<div class="b-feat-text">Make environmentally conscious decisions with data-driven insights.</div>
+							<div class="b-feat-title">♻️ Support Sustainable Farming</div>
+							<div class="b-feat-text">Encourage data-informed resource use.</div>
 						</div>
 					</div>
 				</div>
@@ -1634,20 +1711,20 @@ try {
 			<!-- Right Content (Stats Grid) -->
 			<div class="built-stats-grid">
 				<div class="b-stat-card green">
-					<div class="b-stat-value">98%</div>
-					<div class="b-stat-label">Customer Satisfaction</div>
+					<div class="b-stat-value"><?php echo $farmerCount; ?>+</div>
+					<div class="b-stat-label">Registered Farmers</div>
 				</div>
 				<div class="b-stat-card yellow">
-					<div class="b-stat-value">50k+</div>
-					<div class="b-stat-label">Acres Monitored Daily</div>
+					<div class="b-stat-value">6</div>
+					<div class="b-stat-label">Core Features</div>
 				</div>
 				<div class="b-stat-card yellow">
-					<div class="b-stat-value">24/7</div>
-					<div class="b-stat-label">Expert Support</div>
+					<div class="b-stat-value">AI</div>
+					<div class="b-stat-label">Powered Detection</div>
 				</div>
 				<div class="b-stat-card green">
-					<div class="b-stat-value">100+</div>
-					<div class="b-stat-label">Corn Varieties Tracked</div>
+					<div class="b-stat-value">100%</div>
+					<div class="b-stat-label">Free to Use</div>
 				</div>
 			</div>
 		</div>
@@ -1698,37 +1775,50 @@ try {
 	</section>
 
 		<!-- FAQ Section -->
-					<section class="main-section reveal" id="faq" style="background:transparent;padding-top:32px;padding-bottom:32px;">
-						<div style="max-width:800px;margin:0 auto;">
-							<h2 style="text-align:center;font-size:3.2rem;font-weight:800;letter-spacing:-0.5px;line-height:1.15;margin:0 0 12px 0;color:#2f3e35;">Frequently Asked Questions</h2>
-							<div style="color:#444;font-size:1.13rem;margin-bottom:32px;max-width:700px;margin-left:auto;margin-right:auto;text-align:center;">Find answers to common questions about AgriCorn and how to get the most out of the platform.</div>
+					<section class="main-section reveal" id="faq" style="background: transparent; padding-top:32px;padding-bottom:32px;">
+						<div style="max-width:1100px;margin:0 auto;">
+							<h2 class="section-title">Frequently Asked Questions</h2>
+							<div style="color:#444;font-size:1.13rem;margin-bottom:32px;max-width:900px;margin-left:auto;margin-right:auto;text-align:center;">Find answers to common questions about AgriCorn and how to get the most out of the platform.</div>
 							<div class="faq-accordion">
 								<div class="faq-item">
-									<button class="faq-question">How do I sign up for AgriCorn? <span class="faq-arrow">&#9654;</span></button>
-									<div class="faq-answer">Click the "Get Started" button at the top right and follow the registration steps. You’ll need a valid email address to create your account.</div>
+									<button class="faq-question">How do I sign up for AgriCorn Planner? <span class="faq-arrow">&#9654;</span></button>
+									<div class="faq-answer">Click the Get Started or Sign Up button, then enter your name, address, username, and password to create an account.</div>
 								</div>
 								<div class="faq-item">
-									<button class="faq-question">Is AgriCorn free to use? <span class="faq-arrow">&#9654;</span></button>
-									<div class="faq-answer">Yes, AgriCorn offers a free plan with essential features for farmers. Premium features may be available in the future.</div>
+									<button class="faq-question">Is AgriCorn Planner free to use? <span class="faq-arrow">&#9654;</span></button>
+									<div class="faq-answer">Yes, AgriCorn Planner is available for farmers to use for crop monitoring, planning, and guidance.</div>
 								</div>
 								<div class="faq-item">
-									<button class="faq-question">How can I contact support? <span class="faq-arrow">&#9654;</span></button>
-									<div class="faq-answer">You can reach our support team 24/7 through the contact form or by emailing support@agricorn.com.</div>
+									<button class="faq-question">How does the Corn Care Calendar work? <span class="faq-arrow">&#9654;</span></button>
+									<div class="faq-answer">After entering your planting date, the user will automatically generates a schedule for watering, fertilizer application, and monitoring tasks.</div>
 								</div>
 								<div class="faq-item">
-									<button class="faq-question">Can I use AgriCorn on my mobile device? <span class="faq-arrow">&#9654;</span></button>
-									<div class="faq-answer">Yes, AgriCorn is designed to be mobile-friendly and works on smartphones and tablets as well as desktop computers.</div>
+									<button class="faq-question">How does Pest and Disease Identification work? <span class="faq-arrow">&#9654;</span></button>
+									<div class="faq-answer">Farmers can upload a photo or use the camera to detect possible pests or diseases and receive recommended actions.</div>
 								</div>
 								<div class="faq-item">
-									<button class="faq-question">How do I reset my password? <span class="faq-arrow">&#9654;</span></button>
-									<div class="faq-answer">On the login page, click "Forgot Password?" and follow the instructions to reset your password via email.</div>
+									<button class="faq-question">How accurate is the Machine Learning Growth Prediction? <span class="faq-arrow">&#9654;</span></button>
+									<div class="faq-answer">Predictions are based on recorded planting data and crop activities. Results are estimates and should be used as decision support.</div>
+								</div>
+								<div class="faq-item">
+									<button class="faq-question">What happens if my crop is damaged by typhoon or flood? <span class="faq-arrow">&#9654;</span></button>
+									<div class="faq-answer">You can use the Void Planting Record option to stop monitoring the affected crop and start a new planting cycle.</div>
+								</div>
+								<div class="faq-item">
+									<button class="faq-question">Can I compare estimated yield with actual harvest? <span class="faq-arrow">&#9654;</span></button>
+									<div class="faq-answer">Yes. The Summary feature allows farmers to review estimated yield versus actual harvest results.</div>
+								</div>
+
+								<div class="faq-item">
+									<button class="faq-question">How do I start a new planting cycle after harvest? <span class="faq-arrow">&#9654;</span></button>
+									<div class="faq-answer">After completing a crop cycle, use the Start New Cycle option to create a new planting record.</div>
 								</div>
 							</div>
 						</div>
 					</section>
 				<div class="section-divider"></div>
 											<!-- Footer -->
-																	<footer class="site-footer" role="contentinfo" style="padding:24px 0;border-top:1px solid rgba(0,0,0,0.06);background:#f8faf5;color:#1f2937;">
+																	<footer class="site-footer" role="contentinfo" style="padding:48px 0;border-top:1px solid rgba(127, 182, 133, 0.3);background: linear-gradient(90deg, rgba(127, 182, 133, 0.4), rgba(127, 182, 133, 0.35), rgba(255, 229, 153, 0.4));backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);color:#1f2937;">
 																		<div style="max-width:1200px;margin:0 auto;padding:0 18px;text-align:center;">
 																			<div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
 																				<img src="agricorn.png" alt="AgriCorn logo" style="height:36px;width:auto;">
