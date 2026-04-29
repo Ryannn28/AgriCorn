@@ -597,7 +597,188 @@ if ($requested_action === 'financial_snapshot') {
             display: flex;
             align-items: center;
             gap: 14px;
+            justify-content: space-between;
         }
+        .head-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .icon-btn {
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(44, 62, 46, 0.18);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.72);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #304033;
+        }
+        .icon-btn:hover {
+            transform: translateY(-1px);
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .icon-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* System Guide Modal Styles */
+        .guide-modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 46, 0.45);
+            backdrop-filter: blur(6px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: opacity 0.3s ease;
+        }
+        .guide-modal-backdrop.show {
+            display: flex;
+            opacity: 1;
+        }
+        .guide-modal {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            width: min(100%, 600px);
+            max-height: 85vh;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            border: 1px solid rgba(127, 182, 133, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .guide-modal-backdrop.show .guide-modal {
+            transform: scale(1);
+        }
+        .guide-modal-head {
+            padding: 20px 25px;
+            background: linear-gradient(135deg, rgba(127, 182, 133, 0.15), rgba(255, 229, 153, 0.1));
+            border-bottom: 1px solid rgba(127, 182, 133, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .guide-modal-title {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #2c3e2e;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .guide-modal-title svg {
+            color: #7fb685;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+        .guide-modal-close {
+            background: rgba(0,0,0,0.05);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #666;
+            font-size: 1.2rem;
+            transition: all 0.2s ease;
+        }
+        .guide-modal-close:hover {
+            background: #dc3545;
+            color: #fff;
+        }
+        .guide-modal-body {
+            padding: 25px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #7fb685 rgba(0,0,0,0.05);
+        }
+        .guide-modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+        .guide-modal-body::-webkit-scrollbar-thumb {
+            background-color: #7fb685;
+            border-radius: 10px;
+        }
+        .guide-step {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 24px;
+            position: relative;
+            text-align: left;
+        }
+        .guide-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 17px;
+            top: 40px;
+            bottom: -15px;
+            width: 2px;
+            background: rgba(127, 182, 133, 0.15);
+        }
+        .guide-step-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: #7fb685;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(127, 182, 133, 0.4);
+        }
+        .guide-step-content {
+            flex: 1;
+        }
+        .guide-step-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #2c3e2e;
+            margin-bottom: 6px;
+        }
+        .guide-step-text {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        .guide-step-text strong {
+            color: #2c3e2e;
+        }
+
+        @media (max-width: 576px) {
+            .guide-modal {
+                max-height: 92vh;
+                border-radius: 16px;
+            }
+            .guide-step {
+                gap: 14px;
+            }
+            .guide-modal-title {
+                font-size: 1.1rem;
+            }
+        }
+
         .back-ghost {
             width: 44px;
             height: 44px;
@@ -1208,13 +1389,18 @@ if ($requested_action === 'financial_snapshot') {
 <header class="page-head">
     <div class="head-inner">
         <div class="head-row">
-            <button class="back-ghost" type="button" aria-label="Back" onclick="window.location.href='farmer_dashboard.php?view=features';">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7 1.5-1.5-5.5-5.5 5.5-5.5z"></path></svg>
-            </button>
-            <div>
-                <h1 class="page-title">ML Growth Prediction</h1>
-                <p class="page-sub">High-precision regression analytics for yield and harvest optimization.</p>
+            <div class="head-left">
+                <button class="back-ghost" type="button" aria-label="Back" onclick="window.location.href='farmer_dashboard.php?view=features';">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7 1.5-1.5-5.5-5.5 5.5-5.5z"></path></svg>
+                </button>
+                <div>
+                    <h1 class="page-title">Growth and Harvest Forecasting</h1>
+                    <p class="page-sub">High-precision regression analytics for yield and harvest optimization.</p>
+                </div>
             </div>
+            <button class="icon-btn" title="System Guide" type="button" id="openGuideBtn">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></svg>
+            </button>
         </div>
     </div>
 </header>
@@ -1724,5 +1910,105 @@ if ($requested_action === 'financial_snapshot') {
         });
     })();
 </script>
+    <div class="guide-modal-backdrop" id="guideModalBackdrop">
+        <div class="guide-modal" role="dialog" aria-modal="true">
+            <div class="guide-modal-head">
+                <h3 class="guide-modal-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    Farmer Dashboard System Flow
+                </h3>
+                <button class="guide-modal-close" id="closeGuideBtn" aria-label="Close Guide">x</button>
+            </div>
+            <div class="guide-modal-body">
+                <div class="guide-step">
+                    <div class="guide-step-num">1</div>
+                    <div class="guide-step-content">
+                        <div class="guide-step-title">Corn Planting Profile & Costing</div>
+                        <div class="guide-step-text">Start by entering your planting data. After saving, the <strong>Costing Tab</strong> activates for you to record expenses (seeds, labor, etc.). Once costs are saved, all dashboard features are activated.</div>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="guide-step-num">2</div>
+                    <div class="guide-step-content">
+                        <div class="guide-step-title">Corn Care Calendar</div>
+                        <div class="guide-step-text">Use <strong>"Generate Auto Schedule"</strong> to automatically plan watering and fertilizing. Mark tasks as done to record expenses automatically in your Costing Tab.</div>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="guide-step-num">3</div>
+                    <div class="guide-step-content">
+                        <div class="guide-step-title">Lifecycle Stage Tracker</div>
+                        <div class="guide-step-text">Monitor your corn's growth through 19 stages. Upload actual photos and add condition notes to maintain a visual history of your field.</div>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="guide-step-num">4</div>
+                    <div class="guide-step-content">
+                        <div class="guide-step-title">Corn Farming Guide</div>
+                        <div class="guide-step-text">Access helpful modules for production guidance. The system also recommends specific guides based on your pest and disease analysis.</div>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="guide-step-num">5</div>
+                    <div class="guide-step-content">
+                        <div class="guide-step-title">Pest and Disease Identification</div>
+                        <div class="guide-step-text">Scan or upload images of your plants. Our AI analyzes detections, provides recommended actions, and links you to relevant farming guides.</div>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="guide-step-num">6</div>
+                    <div class="guide-step-content">
+                        <div class="guide-step-title">Growth & Harvest Forecasting</div>
+                        <div class="guide-step-text">Continuous AI analysis updates your harvest dates and yield predictions. Update the <strong>Current Market Price</strong> to see real-time profit recalculations.</div>
+                    </div>
+                </div>
+                <hr style="border-color: rgba(127,182,133,0.15); margin: 20px 0;">
+                <div class="guide-step">
+                    <div class="guide-step-num">!</div>
+                    <div class="guide-step-content">
+                        <div class="guide-step-title">Harvest Summary & Reset</div>
+                        <div class="guide-step-text">The <strong>Summary Icon</strong> activates only at the Harvest Stage. After reviewing your results, use the <strong>"Start New Cycle"</strong> button to begin again. Use <strong>"Void Data"</strong> in your profile if you need to reset early.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            var openGuideBtn = document.getElementById('openGuideBtn');
+            var closeGuideBtn = document.getElementById('closeGuideBtn');
+            var guideModalBackdrop = document.getElementById('guideModalBackdrop');
+
+            function openGuide() {
+                if (guideModalBackdrop) {
+                    guideModalBackdrop.style.display = 'flex';
+                    setTimeout(function() {
+                        guideModalBackdrop.classList.add('show');
+                    }, 10);
+                }
+            }
+            function closeGuide() {
+                if (guideModalBackdrop) {
+                    guideModalBackdrop.classList.remove('show');
+                    setTimeout(function() {
+                        guideModalBackdrop.style.display = 'none';
+                    }, 300);
+                }
+            }
+
+            if (openGuideBtn) openGuideBtn.addEventListener('click', openGuide);
+            if (closeGuideBtn) closeGuideBtn.addEventListener('click', closeGuide);
+            if (guideModalBackdrop) {
+                guideModalBackdrop.addEventListener('click', function(e) {
+                    if (e.target === guideModalBackdrop) closeGuide();
+                });
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeGuide();
+            });
+        })();
+    </script>
 </body>
 </html>
