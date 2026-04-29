@@ -408,7 +408,9 @@ if ($profile) {
 
     $res = null;
     $output = '';
-    $python_executable = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'env' . DIRECTORY_SEPARATOR . 'Scripts' . DIRECTORY_SEPARATOR . 'python.exe';
+    $python_executable_win = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'env' . DIRECTORY_SEPARATOR . 'Scripts' . DIRECTORY_SEPARATOR . 'python.exe';
+    $python_executable_lin = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'env' . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'python';
+    $python_executable = file_exists($python_executable_win) ? $python_executable_win : $python_executable_lin;
     $python_script = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'predict_growth.py';
 
     if (file_exists($python_executable) && file_exists($python_script)) {
@@ -418,7 +420,15 @@ if ($profile) {
         if (!$broken_launcher) {
             $command = escapeshellarg($python_executable) . ' ' . escapeshellarg($python_script) . ' ' . escapeshellarg($base64_input) . ' 2>&1';
             $output = (string)shell_exec($command);
-            $res = json_decode($output, true);
+            
+            $json_start = strpos($output, '{');
+            $json_end = strrpos($output, '}');
+            if ($json_start !== false && $json_end !== false) {
+                $json_str = substr($output, $json_start, $json_end - $json_start + 1);
+                $res = json_decode($json_str, true);
+            } else {
+                $res = null;
+            }
         }
     }
 

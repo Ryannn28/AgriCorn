@@ -20,7 +20,9 @@ $save_error = '';
 $saved_history = [];
 
 // Resolve executable and script paths from current project structure.
-$python_executable = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'env' . DIRECTORY_SEPARATOR . 'Scripts' . DIRECTORY_SEPARATOR . 'python.exe';
+$python_executable_win = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'env' . DIRECTORY_SEPARATOR . 'Scripts' . DIRECTORY_SEPARATOR . 'python.exe';
+$python_executable_lin = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'env' . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'python';
+$python_executable = file_exists($python_executable_win) ? $python_executable_win : $python_executable_lin;
 $python_script = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'predict.py';
 
 function ensure_pest_results_table(mysqli $conn): bool {
@@ -479,7 +481,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $postAction === 'analyze') {
             } else {
                 $command = escapeshellarg($python_executable) . ' ' . escapeshellarg($python_script) . ' ' . escapeshellarg($temp_file_abs) . ' 2>&1';
                 $output_raw = (string) shell_exec($command);
-                $parsed = json_decode($output_raw, true);
+                $parsed = null;
+                $json_start = strpos($output_raw, '{');
+                $json_end = strrpos($output_raw, '}');
+                if ($json_start !== false && $json_end !== false) {
+                    $json_str = substr($output_raw, $json_start, $json_end - $json_start + 1);
+                    $parsed = json_decode($json_str, true);
+                }
 
                 if (is_array($parsed)) {
                     $prediction_result = $parsed;
