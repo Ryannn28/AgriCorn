@@ -1087,10 +1087,180 @@ $startInFeatureView = $requestedDashboardView === "features";
 			--shadow-lg: 0 18px 44px rgba(34, 58, 39, 0.18);
 		}
 
-		* {
-			box-sizing: border-box;
+		/* Professional System Guide Modal - Popup Card Style */
+		.guide-modal-backdrop {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(44, 62, 46, 0.45);
+			backdrop-filter: blur(8px);
+			z-index: 9999;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+		.guide-modal-backdrop.show {
+			display: flex;
+			opacity: 1;
+		}
+		.guide-modal {
+			background: #ffffff;
+			width: min(100%, 700px);
+			max-height: 85vh;
+			border-radius: 24px;
+			box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+			display: flex;
+			flex-direction: column;
+			overflow: hidden;
+			transform: scale(0.92);
+			transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+		}
+		.guide-modal-backdrop.show .guide-modal {
+			transform: scale(1);
+		}
+		.guide-modal-header {
+			padding: 20px 32px;
+			border-bottom: 1px solid #edf2ed;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background: #fcfdfc;
+		}
+		.guide-modal-header h2 {
+			margin: 0;
+			font-size: 1.3rem;
+			font-weight: 800;
+			color: #1f8b3f;
+		}
+		.guide-modal-close {
+			background: #f1f3f1;
+			border: none;
+			width: 32px;
+			height: 32px;
+			border-radius: 50%;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #666;
+			font-size: 1.2rem;
+		}
+		.guide-modal-close:hover { background: #e0e0e0; color: #000; }
+
+		.guide-modal-content {
+			padding: 32px;
+			overflow-y: auto;
+			scrollbar-width: thin;
+		}
+		.guide-section {
+			margin-bottom: 28px;
+		}
+		.guide-section h3 {
+			font-size: 1.05rem;
+			font-weight: 800;
+			color: #2c3e2e;
+			margin-bottom: 10px;
+		}
+		.guide-text {
+			font-size: 0.95rem;
+			color: #555;
+			line-height: 1.6;
+			margin: 0;
+		}
+		.guide-divider {
+			height: 1px;
+			background: #e8f3ea;
+			margin: 24px 0;
 		}
 
+		/* Mobile Menu Styles */
+		.mobile-menu-btn {
+			display: none;
+			background: #fff;
+			border: 1px solid var(--border);
+			padding: 8px;
+			border-radius: 12px;
+			color: var(--primary);
+			cursor: pointer;
+			transition: all 0.2s;
+		}
+		.mobile-menu-btn:hover { background: #fcfdfc; }
+
+		.mobile-actions-dropdown {
+			position: absolute;
+			top: 100%;
+			right: 18px;
+			background: #ffffff;
+			border-radius: 16px;
+			box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+			border: 1px solid var(--border);
+			width: 240px;
+			display: none;
+			flex-direction: column;
+			padding: 8px;
+			z-index: 1000;
+			margin-top: 10px;
+		}
+		.mobile-actions-dropdown.show { display: flex; }
+		
+		.mobile-action-item {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 12px 16px;
+			color: #495a4c;
+			text-decoration: none;
+			font-weight: 600;
+			font-size: 0.9rem;
+			border-radius: 10px;
+			border: none;
+			background: none;
+			width: 100%;
+			text-align: left;
+			cursor: pointer;
+			transition: background 0.2s;
+		}
+		.mobile-action-item:hover { background: #f8faf8; }
+		.mobile-action-item svg { width: 20px; height: 20px; fill: currentColor; }
+		.mobile-action-item.logout { color: #dc3545; }
+
+		@media (max-width: 768px) {
+			.desktop-actions { display: none !important; }
+			.mobile-menu-btn { display: flex !important; }
+			.icon-btn.mobile-persistent { display: flex !important; }
+		}
+	</style>
+
+	<script>
+		function toggleSystemGuide(show) {
+			var backdrop = document.getElementById('guideModalBackdrop');
+			if (!backdrop) {
+				console.error("Guide backdrop not found");
+				return;
+			}
+			if (show) {
+				backdrop.style.display = 'flex';
+				setTimeout(function() {
+					backdrop.classList.add('show');
+				}, 10);
+			} else {
+				backdrop.classList.remove('show');
+				setTimeout(function() {
+					backdrop.style.display = 'none';
+				}, 200);
+			}
+		}
+		window.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape') toggleSystemGuide(false);
+		});
+	</script>
+
+	<style>
 		html,
 		body {
 			height: 100%;
@@ -4256,6 +4426,95 @@ $startInFeatureView = $requestedDashboardView === "features";
 	</style>
 </head>
 <body>
+	<!-- System Guide Modal - Positioned at top for maximum reliability -->
+	<div class="guide-modal-backdrop" id="guideModalBackdrop" style="display: none;" onclick="if(event.target === this) toggleSystemGuide(false)">
+		<div class="guide-modal" role="dialog" aria-modal="true">
+			<div class="guide-modal-header">
+				<h2>Farmer Side System Flow</h2>
+				<button class="guide-modal-close" onclick="toggleSystemGuide(false)">&times;</button>
+			</div>
+
+			<div class="guide-modal-content">
+				<div class="guide-section">
+					<h3>1. Corn Planting Profile</h3>
+					<p class="guide-text">User creates a Corn Planting Profile by entering planting data. After saving, the Costing Tab automatically activates. User records expenses such as seeds, fertilizer, labor, and other costs. Once saved, AgriCorn features are activated. The system automatically generates growth analysis and harvest forecasting. Generated analysis appears in the Real-Time Dashboard.</p>
+				</div>
+
+				<div class="guide-section">
+					<h3>3. Corn Care Calendar</h3>
+					<p class="guide-text">User opens the Corn Care Calendar. User clicks Generate Auto Schedule. The system generates tasks for watering, fertilizer application, and monitoring activities. Daily tasks appear in the calendar. Notification reminders activate for scheduled tasks. User marks tasks as done. If a task has expenses, the cost is automatically recorded in the Costing Tab.</p>
+				</div>
+
+				<div class="guide-section">
+					<h3>2. Lifecycle Stage Tracker</h3>
+					<p class="guide-text">The Lifecycle Stage Tracker is activated after planting data is saved. User can upload photos of corn plants. User can add notes on plant condition. Growth records are stored for monitoring.</p>
+				</div>
+
+				<div class="guide-section">
+					<h3>4. Corn Farming Guide</h3>
+					<p class="guide-text">User accesses the Corn Farming Guide for assistance and guidance. User can search modules related to corn production. Guides can also be recommended from pest and disease analysis.</p>
+				</div>
+
+				<div class="guide-section">
+					<h3>5. Pest and Disease Identification</h3>
+					<p class="guide-text">User scans or uploads an image of the affected corn plant. The system analyzes possible pest or disease detected. The system displays recommended action. The system provides recommended guides based on the Corn Farming Guide.</p>
+				</div>
+
+				<div class="guide-section">
+					<h3>6. Machine Learning Growth Prediction</h3>
+					<p class="guide-text">The system continuously analyzes planting data. The system updates growth prediction and harvest forecasting. Results appear in the Real-Time Dashboard. Allows the user to update the current corn market price so the system can recalculate estimated income and profit forecasts.</p>
+				</div>
+
+				<div class="guide-divider"></div>
+
+				<div class="guide-section">
+					<h3>Summary Icon (Harvest Stage Only)</h3>
+					<p class="guide-text">The Summary icon activates only when the crop reaches Harvest Stage. Harvest Summary shows harvest records, costs, and profit. Yield Comparison shows prediction and actual comparison. New Cycle contains the Start New Cycle button for a new planting cycle.</p>
+				</div>
+
+				<div class="guide-section">
+					<h3>Profile Icon</h3>
+					<p class="guide-text">User can change password. User can use Void Planting Data if the crop is damaged due to unexpected events. Current planting data is cleared and the user can begin a new planting cycle.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function toggleSystemGuide(show) {
+			var backdrop = document.getElementById('guideModalBackdrop');
+			if (!backdrop) return;
+			if (show) {
+				backdrop.style.display = 'flex';
+				setTimeout(function() {
+					backdrop.classList.add('show');
+				}, 10);
+			} else {
+				backdrop.classList.remove('show');
+				setTimeout(function() {
+					backdrop.style.display = 'none';
+				}, 200);
+			}
+		}
+		function toggleMobileMenu() {
+				var mainDropdown = document.getElementById("mobileActionsDropdown");
+				var featureDropdown = document.getElementById("mobileActionsDropdownFeature");
+				
+				if (mainDropdown && mainDropdown.parentElement.closest('#mainDashboardView:not(.d-none)')) {
+					mainDropdown.classList.toggle("show");
+				} else if (featureDropdown) {
+					featureDropdown.classList.toggle("show");
+				}
+			}
+		// Close dropdown when clicking outside
+		window.addEventListener('click', function(e) {
+			var dropdown = document.getElementById('mobileActionsDropdown');
+			var btn = document.getElementById('mobileMenuTrigger');
+			if (dropdown && dropdown.classList.contains('show') && !dropdown.contains(e.target) && !btn.contains(e.target)) {
+				dropdown.classList.remove('show');
+			}
+		});
+	</script>
 	<div id="mainDashboardView" class="<?php echo $startInFeatureView ? "d-none" : ""; ?>">
 		<header class="topbar">
 			<div class="topbar-inner d-flex align-items-center justify-content-between gap-2 flex-wrap">
@@ -4270,21 +4529,59 @@ $startInFeatureView = $requestedDashboardView === "features";
 				</div>
 
 				<div class="d-flex align-items-center gap-2">
-					<button class="icon-btn notif-btn <?php echo $todayTaskNotificationCount > 0 ? "has-alert" : ""; ?>" title="<?php echo htmlspecialchars($notificationTitleText); ?>" type="button" id="notifBtnMain" aria-controls="notifPanel" aria-expanded="false">
-						<svg viewBox="0 0 24 24"><path d="M12 2a6 6 0 0 0-6 6v3.1c0 .7-.2 1.4-.6 2L4 16h16l-1.4-2.9c-.4-.6-.6-1.3-.6-2V8a6 6 0 0 0-6-6zm0 20a3 3 0 0 0 2.8-2H9.2A3 3 0 0 0 12 22z"></path></svg>
-						<?php if ($todayTaskNotificationCount > 0) { ?>
-							<span class="notif-badge"><?php echo htmlspecialchars($notificationBadgeLabel); ?></span>
-						<?php } ?>
-					</button>
-					<button class="icon-btn" title="Harvest Summary" type="button" id="summaryBtnMain">
-						<svg viewBox="0 0 24 24"><path d="M4 19h16v2H4v-2zm1-2 4.5-6 3.5 4L18 8l1.5 1-6.2 8.6-3.6-4L6.6 18H5z"></path></svg>
-					</button>
-					<button class="icon-btn" title="Profile" type="button" id="profileBtnMain">
-						<svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0 2c4.4 0 8 2.2 8 5v2H4v-2c0-2.8 3.6-5 8-5z"></path></svg>
-					</button>
-					<button class="icon-btn logout" title="Logout" type="button" id="logoutBtnMain">
-						<svg viewBox="0 0 24 24"><path d="M16 17v-3h-6v-4h6V7l5 5-5 5zM3 5h8V3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8v-2H3V5z"></path></svg>
-					</button>
+					<!-- Desktop Actions -->
+					<div class="desktop-actions d-flex align-items-center gap-2">
+						<button class="icon-btn notif-btn <?php echo $todayTaskNotificationCount > 0 ? "has-alert" : ""; ?>" title="<?php echo htmlspecialchars($notificationTitleText); ?>" type="button" id="notifBtnMain" aria-controls="notifPanel" aria-expanded="false">
+							<svg viewBox="0 0 24 24"><path d="M12 2a6 6 0 0 0-6 6v3.1c0 .7-.2 1.4-.6 2L4 16h16l-1.4-2.9c-.4-.6-.6-1.3-.6-2V8a6 6 0 0 0-6-6zm0 20a3 3 0 0 0 2.8-2H9.2A3 3 0 0 0 12 22z"></path></svg>
+							<?php if ($todayTaskNotificationCount > 0) { ?>
+								<span class="notif-badge"><?php echo htmlspecialchars($notificationBadgeLabel); ?></span>
+							<?php } ?>
+						</button>
+						<button class="icon-btn" title="Harvest Summary" type="button" id="summaryBtnMain">
+							<svg viewBox="0 0 24 24"><path d="M4 19h16v2H4v-2zm1-2 4.5-6 3.5 4L18 8l1.5 1-6.2 8.6-3.6-4L6.6 18H5z"></path></svg>
+						</button>
+						<button class="icon-btn" title="System Guide" type="button" id="openGuideBtn" onclick="toggleSystemGuide(true)">
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></svg>
+						</button>
+						<button class="icon-btn" title="Profile" type="button" id="profileBtnMain">
+							<svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0 2c4.4 0 8 2.2 8 5v2H4v-2c0-2.8 3.6-5 8-5z"></path></svg>
+						</button>
+						<button class="icon-btn logout" title="Logout" type="button" id="logoutBtnMain">
+							<svg viewBox="0 0 24 24"><path d="M16 17v-3h-6v-4h6V7l5 5-5 5zM3 5h8V3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8v-2H3V5z"></path></svg>
+						</button>
+					</div>
+
+					<!-- Mobile Header Actions -->
+					<div class="d-flex align-items-center gap-2">
+						<button class="mobile-menu-btn" id="mobileMenuTrigger" onclick="toggleMobileMenu()" title="Open Menu">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+						</button>
+						<button class="icon-btn notif-btn mobile-persistent <?php echo $todayTaskNotificationCount > 0 ? "has-alert" : ""; ?>" id="notifBtnMobileMain" style="display: none;" title="<?php echo htmlspecialchars($notificationTitleText); ?>" type="button">
+							<svg viewBox="0 0 24 24"><path d="M12 2a6 6 0 0 0-6 6v3.1c0 .7-.2 1.4-.6 2L4 16h16l-1.4-2.9c-.4-.6-.6-1.3-.6-2V8a6 6 0 0 0-6-6zm0 20a3 3 0 0 0 2.8-2H9.2A3 3 0 0 0 12 22z"></path></svg>
+							<?php if ($todayTaskNotificationCount > 0) { ?>
+								<span class="notif-badge"><?php echo htmlspecialchars($notificationBadgeLabel); ?></span>
+							<?php } ?>
+						</button>
+						<button class="icon-btn logout mobile-persistent" style="display: none; color: #dc3545;" title="Logout" type="button" onclick="document.getElementById('logoutBtnMain').click()">
+							<svg viewBox="0 0 24 24"><path d="M16 17v-3h-6v-4h6V7l5 5-5 5zM3 5h8V3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8v-2H3V5z"></path></svg>
+						</button>
+					</div>
+
+					<!-- Mobile Dropdown -->
+					<div class="mobile-actions-dropdown" id="mobileActionsDropdown">
+						<button class="mobile-action-item" onclick="toggleMobileMenu(); document.getElementById('summaryBtnMain').click()">
+							<svg viewBox="0 0 24 24"><path d="M4 19h16v2H4v-2zm1-2 4.5-6 3.5 4L18 8l1.5 1-6.2 8.6-3.6-4L6.6 18H5z"></path></svg>
+							Harvest Summary
+						</button>
+						<button class="mobile-action-item" onclick="toggleMobileMenu(); toggleSystemGuide(true)">
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></svg>
+							System Guide
+						</button>
+						<button class="mobile-action-item" onclick="toggleMobileMenu(); document.getElementById('profileBtnMain').click()">
+							<svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0 2c4.4 0 8 2.2 8 5v2H4v-2c0-2.8 3.6-5 8-5z"></path></svg>
+							My Profile
+						</button>
+					</div>
 				</div>
 			</div>
 		</header>
@@ -4520,7 +4817,7 @@ $startInFeatureView = $requestedDashboardView === "features";
 					</div>
 				</div>
 
-				<div class="col-12">
+				<div class="col-12 mb-4">
 					<section class="panel h-100">
 						<div class="panel-header">
 							<div>
@@ -4554,21 +4851,60 @@ $startInFeatureView = $requestedDashboardView === "features";
 				</div>
 
 				<div class="d-flex align-items-center gap-2">
-					<button class="icon-btn notif-btn <?php echo $todayTaskNotificationCount > 0 ? "has-alert" : ""; ?>" title="<?php echo htmlspecialchars($notificationTitleText); ?>" type="button" id="notifBtnFeature" aria-controls="notifPanel" aria-expanded="false">
-						<svg viewBox="0 0 24 24"><path d="M12 2a6 6 0 0 0-6 6v3.1c0 .7-.2 1.4-.6 2L4 16h16l-1.4-2.9c-.4-.6-.6-1.3-.6-2V8a6 6 0 0 0-6-6zm0 20a3 3 0 0 0 2.8-2H9.2A3 3 0 0 0 12 22z"></path></svg>
-						<?php if ($todayTaskNotificationCount > 0) { ?>
-							<span class="notif-badge"><?php echo htmlspecialchars($notificationBadgeLabel); ?></span>
-						<?php } ?>
-					</button>
-					<button class="icon-btn" title="Harvest Summary" type="button" id="summaryBtnFeature">
-						<svg viewBox="0 0 24 24"><path d="M4 19h16v2H4v-2zm1-2 4.5-6 3.5 4L18 8l1.5 1-6.2 8.6-3.6-4L6.6 18H5z"></path></svg>
-					</button>
-					<button class="icon-btn" title="Profile" type="button" id="profileBtnFeature">
-						<svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0 2c4.4 0 8 2.2 8 5v2H4v-2c0-2.8 3.6-5 8-5z"></path></svg>
-					</button>
-					<button class="icon-btn logout" title="Logout" type="button" id="logoutBtnFeature">
-						<svg viewBox="0 0 24 24"><path d="M16 17v-3h-6v-4h6V7l5 5-5 5zM3 5h8V3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8v-2H3V5z"></path></svg>
-					</button>
+					<!-- Desktop Actions -->
+					<div class="desktop-actions d-flex align-items-center gap-2">
+						<button class="icon-btn notif-btn <?php echo $todayTaskNotificationCount > 0 ? "has-alert" : ""; ?>" title="<?php echo htmlspecialchars($notificationTitleText); ?>" type="button" id="notifBtnFeature" aria-controls="notifPanel" aria-expanded="false">
+							<svg viewBox="0 0 24 24"><path d="M12 2a6 6 0 0 0-6 6v3.1c0 .7-.2 1.4-.6 2L4 16h16l-1.4-2.9c-.4-.6-.6-1.3-.6-2V8a6 6 0 0 0-6-6zm0 20a3 3 0 0 0 2.8-2H9.2A3 3 0 0 0 12 22z"></path></svg>
+							<?php if ($todayTaskNotificationCount > 0) { ?>
+								<span class="notif-badge"><?php echo htmlspecialchars($notificationBadgeLabel); ?></span>
+							<?php } ?>
+						</button>
+						<button class="icon-btn" title="Harvest Summary" type="button" id="summaryBtnFeature">
+							<svg viewBox="0 0 24 24"><path d="M4 19h16v2H4v-2zm1-2 4.5-6 3.5 4L18 8l1.5 1-6.2 8.6-3.6-4L6.6 18H5z"></path></svg>
+						</button>
+						<button class="icon-btn" title="System Guide" type="button" id="openGuideBtnFeature" onclick="toggleSystemGuide(true)">
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></svg>
+						</button>
+						<button class="icon-btn" title="Profile" type="button" id="profileBtnFeature">
+							<svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0 2c4.4 0 8 2.2 8 5v2H4v-2c0-2.8 3.6-5 8-5z"></path></svg>
+						</button>
+						<button class="icon-btn logout" title="Logout" type="button" id="logoutBtnFeature">
+							<svg viewBox="0 0 24 24"><path d="M16 17v-3h-6v-4h6V7l5 5-5 5zM3 5h8V3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8v-2H3V5z"></path></svg>
+						</button>
+					</div>
+
+					<!-- Mobile Header Actions (Feature) -->
+					<div class="d-flex align-items-center gap-2">
+						<button class="mobile-menu-btn" id="mobileMenuTriggerFeature" onclick="toggleMobileMenu()" title="Open Menu">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+						</button>
+						<button class="icon-btn notif-btn mobile-persistent <?php echo $todayTaskNotificationCount > 0 ? "has-alert" : ""; ?>" id="notifBtnMobileFeature" style="display: none;" title="<?php echo htmlspecialchars($notificationTitleText); ?>" type="button">
+							<svg viewBox="0 0 24 24"><path d="M12 2a6 6 0 0 0-6 6v3.1c0 .7-.2 1.4-.6 2L4 16h16l-1.4-2.9c-.4-.6-.6-1.3-.6-2V8a6 6 0 0 0-6-6zm0 20a3 3 0 0 0 2.8-2H9.2A3 3 0 0 0 12 22z"></path></svg>
+							<?php if ($todayTaskNotificationCount > 0) { ?>
+								<span class="notif-badge"><?php echo htmlspecialchars($notificationBadgeLabel); ?></span>
+							<?php } ?>
+						</button>
+						<button class="icon-btn logout mobile-persistent" style="display: none; color: #dc3545;" title="Logout" type="button" onclick="document.getElementById('logoutBtnFeature').click()">
+							<svg viewBox="0 0 24 24"><path d="M16 17v-3h-6v-4h6V7l5 5-5 5zM3 5h8V3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8v-2H3V5z"></path></svg>
+						</button>
+					</div>
+
+					<!-- Mobile Dropdown (Feature) -->
+					<div class="mobile-actions-dropdown" id="mobileActionsDropdownFeature">
+						<button class="mobile-action-item" onclick="toggleMobileMenu(); document.getElementById('summaryBtnFeature').click()">
+							<svg viewBox="0 0 24 24"><path d="M4 19h16v2H4v-2zm1-2 4.5-6 3.5 4L18 8l1.5 1-6.2 8.6-3.6-4L6.6 18H5z"></path></svg>
+							Harvest Summary
+						</button>
+						<button class="mobile-action-item" onclick="toggleMobileMenu(); toggleSystemGuide(true)">
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></svg>
+							System Guide
+						</button>
+						<button class="mobile-action-item" onclick="toggleMobileMenu(); document.getElementById('profileBtnFeature').click()">
+							<svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0 2c4.4 0 8 2.2 8 5v2H4v-2c0-2.8 3.6-5 8-5z"></path></svg>
+							My Profile
+						</button>
+					</div>
+				</div>
 				</div>
 			</div>
 		</header>
@@ -7915,6 +8251,8 @@ $startInFeatureView = $requestedDashboardView === "features";
 
 			var notifBtnMain = document.getElementById("notifBtnMain");
 			var notifBtnFeature = document.getElementById("notifBtnFeature");
+			var notifBtnMobileMain = document.getElementById("notifBtnMobileMain");
+			var notifBtnMobileFeature = document.getElementById("notifBtnMobileFeature");
 			var notifPanel = document.getElementById("notifPanel");
 			var notifViewButtons = notifPanel.querySelectorAll(".notif-view-btn");
 
@@ -7944,6 +8282,20 @@ $startInFeatureView = $requestedDashboardView === "features";
 				event.stopPropagation();
 				toggleNotifPanel(notifBtnFeature);
 			});
+
+			if (notifBtnMobileMain) {
+				notifBtnMobileMain.addEventListener("click", function (event) {
+					event.stopPropagation();
+					toggleNotifPanel(notifBtnMobileMain);
+				});
+			}
+
+			if (notifBtnMobileFeature) {
+				notifBtnMobileFeature.addEventListener("click", function (event) {
+					event.stopPropagation();
+					toggleNotifPanel(notifBtnMobileFeature);
+				});
+			}
 
 			if (summaryBtnMain) {
 				summaryBtnMain.addEventListener("click", function () {
