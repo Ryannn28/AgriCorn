@@ -21,6 +21,7 @@ try {
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);
 				gap: 18px;
+				align-items: start;
 			}
 			@media (max-width: 900px) {
 				.faq-accordion {
@@ -81,7 +82,17 @@ try {
 				document.querySelectorAll('.faq-question').forEach(function(btn) {
 					btn.addEventListener('click', function() {
 						const item = btn.closest('.faq-item');
-						item.classList.toggle('active');
+						const isOpen = item.classList.contains('active');
+						
+						// Close all other FAQ items
+						document.querySelectorAll('.faq-item').forEach(other => {
+							other.classList.remove('active');
+						});
+						
+						// If the clicked item was NOT already open, open it
+						if (!isOpen) {
+							item.classList.add('active');
+						}
 					});
 				});
 
@@ -290,17 +301,43 @@ try {
 			box-shadow: 0 6px 16px rgba(33, 179, 106, 0.3);
 		}
 		@media (max-width: 1200px) {
-			.navbar-menu {
-				display: none;
-			}
-			.navbar-toggle {
-				display: flex;
+			.navbar {
+				flex-wrap: wrap;
+				padding: 12px 24px;
 			}
 			.navbar-logo {
 				flex: 1;
+				order: 1;
+			}
+			.navbar-toggle {
+				display: flex;
+				order: 2;
+				margin-left: 12px;
 			}
 			.navbar-actions {
+				order: 3;
 				flex: 0;
+				margin-left: 12px;
+			}
+			.navbar-menu {
+				display: none;
+				width: 100%;
+				order: 4;
+				flex-direction: column;
+				gap: 8px;
+				padding: 16px 0;
+				flex: none;
+				justify-content: flex-start;
+			}
+			.navbar.is-open .navbar-menu {
+				display: flex;
+			}
+			.navbar-menu a {
+				width: 100%;
+				padding: 12px;
+				background: rgba(255, 255, 255, 0.5);
+				border-radius: 8px;
+				text-align: center;
 			}
 		}
 		.navbar-menu a:focus-visible,
@@ -1136,26 +1173,22 @@ try {
 			}
 
 			.navbar-menu {
+				display: none;
+				width: 100%;
 				flex-direction: column;
-				gap: 10px;
-				padding: 14px 0 6px 0;
+				gap: 8px;
+				padding: 16px 0;
 			}
 
 			.navbar-menu a {
 				display: block;
-				padding: 10px 12px;
+				padding: 12px;
 				border-radius: 10px;
 				background: rgba(255, 255, 255, 0.62);
-			}
-
-			.navbar-action {
-				margin-top: 10px;
-				justify-content: center;
 				text-align: center;
 			}
 
-			.navbar.is-open .navbar-menu,
-			.navbar.is-open .navbar-action {
+			.navbar.is-open .navbar-menu {
 				display: flex;
 			}
 

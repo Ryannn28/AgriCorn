@@ -16,6 +16,10 @@ $display_image_src = null;
 $display_image_name = '';
 $related_guides = [];
 $save_message = '';
+if (isset($_SESSION['pest_save_msg'])) {
+    $save_message = $_SESSION['pest_save_msg'];
+    unset($_SESSION['pest_save_msg']);
+}
 $save_error = '';
 $saved_history = [];
 
@@ -46,13 +50,25 @@ function ensure_pest_results_table(mysqli $conn): bool {
     $columnInfo = $conn->query("SHOW COLUMNS FROM pest_and_disease_results LIKE 'image'");
     if ($columnInfo instanceof mysqli_result) {
         $col = $columnInfo->fetch_assoc();
-        $columnInfo->close();
-        $type = strtolower((string) ($col['Type'] ?? ''));
-        if ($type !== '' && strpos($type, 'varchar') === false) {
-            if ($conn->query("ALTER TABLE pest_and_disease_results MODIFY image VARCHAR(255) NOT NULL") !== true) {
-                return false;
+        if ($col) {
+            $type = strtolower((string) ($col['Type'] ?? ''));
+            if ($type !== '' && strpos($type, 'varchar') === false) {
+                $conn->query("ALTER TABLE pest_and_disease_results MODIFY image VARCHAR(255) NOT NULL");
             }
         }
+        $columnInfo->close();
+    }
+
+    // Ensure action_recommended exists (v1 to v2 transition)
+    $columnInfo = $conn->query("SHOW COLUMNS FROM pest_and_disease_results LIKE 'action_recommended'");
+    if ($columnInfo instanceof mysqli_result && $columnInfo->num_rows === 0) {
+        $conn->query("ALTER TABLE pest_and_disease_results ADD COLUMN action_recommended TEXT NOT NULL AFTER image");
+    }
+
+    // Ensure related_guides exists (v2 to v3 transition)
+    $columnInfo = $conn->query("SHOW COLUMNS FROM pest_and_disease_results LIKE 'related_guides'");
+    if ($columnInfo instanceof mysqli_result && $columnInfo->num_rows === 0) {
+        $conn->query("ALTER TABLE pest_and_disease_results ADD COLUMN related_guides LONGTEXT NOT NULL AFTER action_recommended");
     }
 
     return true;
@@ -591,7 +607,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $postAction === 'save_result') {
                             $stmtSave->close();
 
                             if ($ok) {
-                                $save_message = 'Result saved to history.';
+                                $_SESSION['pest_save_msg'] = 'Result saved to history.';
+                                header('Location: farmer_dashboard.php');
+                                exit;
                             } else {
                                 $save_error = 'Saving failed. ' . ($stmtError !== '' ? $stmtError : 'Please try again.');
                             }
@@ -1884,6 +1902,54 @@ try {
                 }
             }
         }
+        .modal-mask {
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 29, 23, 0.4);
+            backdrop-filter: blur(3px);
+            z-index: 2000;
+            display: none;
+        }
+        .modal-mask.show {
+            display: block;
+        }
+        .custom-confirm-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.98);
+            background: #fff;
+            border-radius: 14px;
+            width: min(92vw, 380px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            z-index: 2001;
+            padding: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.2s ease;
+        }
+        .custom-confirm-modal.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .confirm-title {
+            margin: 0 0 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+        .confirm-desc {
+            margin: 0 0 20px;
+            color: #5f6f63;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .confirm-btn-save {
+            background-color: #ef4444 !important;
+            border-color: #ef4444 !important;
+            color: #fff !important;
+        }
     </style>
 </head>
 <body>
@@ -2049,7 +2115,7 @@ try {
                                         $actionRecommendedText = implode("\n", getRecSteps((string) $prediction_result['class']));
                                         $guidesPayload = build_related_guides_payload($related_guides);
                                     ?>
-                                    <form action="" method="POST" class="mt-3">
+                                    <form id="saveResultForm" action="" method="POST" class="mt-3">
                                         <input type="hidden" name="form_action" value="save_result">
                                         <input type="hidden" name="result" value="<?= htmlspecialchars((string) $prediction_result['class']) ?>">
                                         <input type="hidden" name="confidence" value="<?= htmlspecialchars((string) ($prediction_result['confidence'] ?? '')) ?>">
@@ -2057,7 +2123,7 @@ try {
                                         <input type="hidden" name="image_name" value="<?= htmlspecialchars((string) $display_image_name) ?>">
                                         <textarea name="action_recommended" hidden><?= htmlspecialchars($actionRecommendedText) ?></textarea>
                                         <textarea name="related_guides" hidden><?= htmlspecialchars($guidesPayload) ?></textarea>
-                                        <button type="submit" class="btn btn-success w-100 mt-2"><i class="bi bi-save2 me-2"></i>Save Results</button>
+                                        <button type="button" class="btn btn-success w-100 mt-2" onclick="showSaveConfirm()"><i class="bi bi-save2 me-2"></i>Save Results</button>
                                     </form>
                                 </div>
                             </div>
@@ -2091,6 +2157,16 @@ try {
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal-mask" id="saveConfirmMask"></div>
+<div class="custom-confirm-modal" id="saveConfirmModal">
+    <h3 class="confirm-title">Save Results</h3>
+    <p class="confirm-desc">Are you sure you want to save this analysis result? You will be redirected to the dashboard.</p>
+    <div class="d-flex justify-content-end gap-2">
+        <button class="btn btn-outline-secondary" onclick="hideSaveConfirm()" type="button" style="border-radius: 10px; font-weight: 600; padding: 8px 16px;">Cancel</button>
+        <button class="btn btn-danger confirm-btn-save" onclick="executeSave()" type="button" style="border-radius: 10px; font-weight: 600; padding: 8px 16px; background-color: #ef4444; border: none; color: white;">Save</button>
     </div>
 </div>
 <div id="historyModal" class="history-modal" aria-hidden="true">
@@ -2537,6 +2613,33 @@ try {
         showSaveToast(pageSaveMessage, false);
     } else if (pageSaveError) {
         showSaveToast(pageSaveError, true);
+    }
+
+    function showSaveConfirm() {
+        const mask = document.getElementById('saveConfirmMask');
+        const modal = document.getElementById('saveConfirmModal');
+        if (mask && modal) {
+            mask.classList.add('show');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function hideSaveConfirm() {
+        const mask = document.getElementById('saveConfirmMask');
+        const modal = document.getElementById('saveConfirmModal');
+        if (mask && modal) {
+            mask.classList.remove('show');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    }
+
+    function executeSave() {
+        const form = document.getElementById('saveResultForm');
+        if (form) {
+            form.submit();
+        }
     }
 </script>
 </body>
