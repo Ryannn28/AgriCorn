@@ -2216,8 +2216,16 @@ if ($initialTasksJson === false) {
 				max-height: 95vh;
 			}
 			.main-grid {
-				grid-template-columns: 1fr;
+				display: flex;
+				flex-direction: column;
+				gap: 14px;
 			}
+			.right-stack {
+				display: contents;
+			}
+			.tasks-panel { order: 1; }
+			.calendar-panel { order: 2; }
+			.upcoming-panel { order: 3; }
 
 			.fixed-size-panel {
 				height: 280px;
@@ -2374,9 +2382,10 @@ if ($initialTasksJson === false) {
 			}
 		}
 
-		@media (max-width: 420px) {
+		@media (max-width: 480px) {
 			.stats-grid {
-				grid-template-columns: 1fr;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 10px;
 			}
 
 			.task-list,
@@ -2500,7 +2509,7 @@ if ($initialTasksJson === false) {
 			</div>
 
 			<div class="right-stack">
-				<div class="panel fixed-size-panel">
+				<div class="panel fixed-size-panel tasks-panel">
 					<div class="panel-head">
 						<div>
 							<h3 class="panel-title">Tasks on Selected Date</h3>
@@ -2522,7 +2531,7 @@ if ($initialTasksJson === false) {
 					</div>
 				</div>
 
-				<div class="panel fixed-size-panel">
+				<div class="panel fixed-size-panel upcoming-panel">
 					<div class="panel-head">
 						<div>
 							<h3 class="panel-title">Upcoming 7 Days</h3>
